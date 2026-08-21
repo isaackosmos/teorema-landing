@@ -37,8 +37,8 @@ export function Hero({ meta, content }: { meta: SiteMeta; content: HeroContent }
       </div>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/80 to-surface-subtle" />
 
-      <Container className="relative grid items-center gap-12 lg:grid-cols-2 lg:gap-8">
-        <div>
+      <Container className="relative grid min-w-0 items-center gap-12 lg:grid-cols-2 lg:gap-8">
+        <div className="min-w-0">
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <Pill tone="accent">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
@@ -108,23 +108,23 @@ export function Hero({ meta, content }: { meta: SiteMeta; content: HeroContent }
           </div>
         </div>
 
-        <div className="relative flex items-center justify-center lg:h-[560px]">
+        <div className="relative flex min-w-0 items-center justify-center lg:h-[560px]">
           <motion.div
             initial={{ opacity: 0, y: 24, rotate: -1 }}
             animate={{ opacity: 1, y: 0, rotate: 0 }}
             transition={{ delay: 0.25, duration: 0.7 }}
             className="relative w-full max-w-[560px] overflow-hidden rounded-xl border border-gray-200/70 bg-white shadow-elevated"
           >
-            <div className="flex h-14 items-center justify-between border-b border-gray-100 bg-surface-subtle px-6">
-              <div className="flex items-center gap-3">
-                <div className="flex gap-1.5">
+            <div className="flex h-14 items-center justify-between gap-3 border-b border-gray-100 bg-surface-subtle px-6">
+              <div className="flex min-w-0 items-center gap-3">
+                <div className="flex shrink-0 gap-1.5">
                   <div className="h-2.5 w-2.5 rounded-full bg-[#FF5F56]" />
                   <div className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E]" />
                   <div className="h-2.5 w-2.5 rounded-full bg-[#27CA3F]" />
                 </div>
-                <span className="ml-3 text-[13px] font-semibold text-ink">{preview.windowTitle}</span>
+                <span className="ml-3 truncate text-[13px] font-semibold text-ink">{preview.windowTitle}</span>
               </div>
-              <div className="flex items-center gap-2 text-[12px] text-muted">
+              <div className="flex shrink-0 items-center gap-2 text-[12px] text-muted">
                 <RefreshCw className="h-4 w-4 text-brand" /> {preview.syncedLabel}
               </div>
             </div>
@@ -173,20 +173,20 @@ export function Hero({ meta, content }: { meta: SiteMeta; content: HeroContent }
                 {preview.orders.map((order) => (
                   <div
                     key={order.id}
-                    className="flex items-center justify-between rounded-sm border border-gray-100 px-3 py-2.5"
+                    className="flex items-center justify-between gap-2 rounded-sm border border-gray-100 px-3 py-2.5"
                   >
-                    <div className="flex items-center gap-2.5">
-                      <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-tint">
+                    <div className="flex min-w-0 items-center gap-2.5">
+                      <div className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand-tint">
                         <TrendingUp className="h-3.5 w-3.5 text-brand" />
                       </div>
-                      <div>
-                        <div className="text-[12px] font-semibold text-ink">
+                      <div className="min-w-0">
+                        <div className="truncate text-[12px] font-semibold text-ink">
                           {order.id} • {order.client}
                         </div>
-                        <div className="text-[11px] text-muted">{order.amount}</div>
+                        <div className="truncate text-[11px] text-muted">{order.amount}</div>
                       </div>
                     </div>
-                    <span className="rounded-full border border-emerald-100 bg-[#F0FDF4] px-2 py-1 text-[10px] font-semibold text-emerald-700">
+                    <span className="shrink-0 rounded-full border border-emerald-100 bg-[#F0FDF4] px-2 py-1 text-[10px] font-semibold text-emerald-700">
                       {order.status}
                     </span>
                   </div>
@@ -206,7 +206,11 @@ export function Hero({ meta, content }: { meta: SiteMeta; content: HeroContent }
                 delay: note.position === "top-left" ? 0 : 0.6,
               }}
               className={cn(
-                "absolute hidden items-center gap-2.5 rounded-full px-4 py-2.5 shadow-pill md:flex",
+                // Only shown once the hero switches to its two-column
+                // layout (lg:) — below that, the card is full-width and
+                // this badge's negative offset would sit under the fixed
+                // WhatsApp button (see WhatsAppFloatingButton).
+                "absolute hidden items-center gap-2.5 rounded-full px-4 py-2.5 shadow-pill lg:flex",
                 note.position === "top-left"
                   ? "-left-6 top-[60px] border border-gray-100 bg-white"
                   : "-right-4 bottom-20 rounded-md bg-ink-deep shadow-dark",

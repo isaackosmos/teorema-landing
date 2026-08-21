@@ -19,6 +19,13 @@ const fontSans = Inter({
 });
 
 export const metadata: Metadata = {
+  // NOTE: assumed production domain, based on the V3ndor Praxis support
+  // email (contato@v3ndorpraxis.com.br). Required so Next.js can resolve
+  // absolute URLs for Open Graph / Twitter images — confirm this matches
+  // the real deploy domain before launch, or set NEXT_PUBLIC_SITE_URL.
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://v3ndorpraxis.com.br",
+  ),
   title: "Teorema Landing",
   description: "Landing pages for Teorema products.",
 };

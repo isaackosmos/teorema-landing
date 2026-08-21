@@ -15,6 +15,13 @@
     scroll-behavior: smooth;
   }
 
+  html,
+  body {
+    /* Safety net: no single section should ever be able to force
+       horizontal page scroll on narrow viewports. */
+    @apply overflow-x-hidden;
+  }
+
   body {
     @apply bg-surface-subtle text-ink font-sans antialiased;
   }
