@@ -1,6 +1,17 @@
 import { Container } from "@/components/ui/Container";
 import { IconTile } from "@/components/ui/IconTile";
+import { cn } from "@/lib/utils";
 import type { SupportContent } from "@/content/types";
+
+/**
+ * The grid follows the number of channels a product actually offers, so a
+ * product with fewer than three doesn't leave empty columns. Three (or more)
+ * channels keep the original three-column layout.
+ */
+const columnClasses: Record<number, string> = {
+  1: "md:grid-cols-1",
+  2: "md:grid-cols-2",
+};
 
 /**
  * Support channels grid with a live-status indicator. Anchor target for
@@ -22,7 +33,7 @@ export function Support({ content }: { content: SupportContent }) {
           </div>
         </div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        <div className={cn("mt-10 grid gap-4", columnClasses[content.channels.length] ?? "md:grid-cols-3")}>
           {content.channels.map((channel) => (
             <div key={channel.title} className="rounded-lg border border-gray-100 bg-surface-subtle p-6">
               <IconTile icon={channel.icon} size="lg" tone="dark" />

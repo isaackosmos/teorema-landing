@@ -40,7 +40,9 @@ export function Pricing({ content }: { content: PricingContent }) {
               </div>
               <div className={cn("mt-2 text-[14px]", plan.highlighted ? "text-white/70" : "text-muted")}>{plan.description}</div>
 
-              <div className="mt-6 space-y-3">
+              {/* A plan with no feature list yet (e.g. an unreleased tier)
+                  renders no list at all, rather than an empty spaced block. */}
+              <div className={cn("flex-1 space-y-3", plan.features.length > 0 && "mt-6")}>
                 {plan.features.map((feature) => (
                   <div key={feature} className="flex items-center gap-2.5 text-[14px]">
                     <div className={cn("grid h-5 w-5 place-items-center rounded-full", plan.highlighted ? "bg-white/10" : "bg-brand-tint")}>

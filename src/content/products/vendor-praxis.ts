@@ -9,8 +9,7 @@ import {
   Smartphone,
   Check,
   Phone,
-  MessageCircle,
-  GraduationCap,
+  Mail,
 } from "lucide-react";
 import type { ProductContent } from "@/content/types";
 
@@ -23,7 +22,7 @@ const vendorPraxis: ProductContent = {
   meta: {
     productName: "V3ndor Praxis",
     logo: { src: "/logos/vendor-praxis-logo.jpg", alt: "V3ndor Praxis" },
-    supportEmail: "contato@v3ndorpraxis.com.br",
+    supportEmail: "teorema@teorema.inf.br",
     whatsapp: {
       phoneDisplay: "42-3035-4030",
       link: "https://wa.me/554230354030?text=Olá!%20Quero%20conhecer%20o%20V3ndor%20Praxis%20-%20Seu%20negócio%20muda.%20Seu%20sistema%20acompanha.",
@@ -49,7 +48,7 @@ const vendorPraxis: ProductContent = {
     subheadBold: "Seu negócio muda. Seu sistema acompanha.",
     subheadRest:
       " Unifique financeiro, vendas, estoque e fiscal em uma plataforma rápida, segura e sem limites para escalar.",
-    primaryCta: { label: "Testar 14 dias grátis", href: "#planos" },
+    primaryCta: { label: "Começar agora", href: "#planos" },
     secondaryCta: { label: "Ver plataforma", href: "#plataforma" },
     socialProof: {
       avatarCount: 3,
@@ -125,27 +124,29 @@ const vendorPraxis: ProductContent = {
     plans: [
       {
         name: "Starter",
-        price: "R$ 189",
+        price: "R$ 115",
         priceSuffix: "/mês",
         description: "Para quem está começando a organizar",
-        features: ["Até 2 usuários", "Módulos financeiro e vendas", "1.000 NFs/mês", "Suporte chat"],
+        features: [
+          "1 usuário",
+          "1 empresa",
+          "Módulos financeiro, estoque e vendas",
+          "500 NFs/mês",
+          "Suporte humanizado",
+        ],
         cta: { label: "Começar no Starter", href: "#contato" },
+        // Destaque fica no Starter porque é o único plano disponível hoje —
+        // o Business ainda não tem preço nem data de lançamento.
+        highlighted: true,
       },
       {
         name: "Business",
-        price: "R$ 389",
-        priceSuffix: "/mês",
-        description: "O mais escolhido por quem está escalando",
-        features: [
-          "Até 10 usuários",
-          "Todos os módulos inclusos",
-          "NF ilimitada + API",
-          "Suporte prioritário",
-          "Treinamento incluso",
-        ],
-        cta: { label: "Escolher Business", href: "#contato" },
-        highlighted: true,
-        badge: "Mais escolhido",
+        // Sem preço definido: o plano ainda não foi lançado. Nenhuma feature
+        // listada até que o escopo do plano esteja fechado.
+        price: "Em breve",
+        description: "Para quem está escalando",
+        features: [],
+        cta: { label: "Quero ser avisado", href: "#contato" },
       },
       {
         name: "Enterprise",
@@ -218,8 +219,7 @@ const vendorPraxis: ProductContent = {
     statusLabel: "Online agora • Tempo médio 1m 42s",
     channels: [
       { icon: Phone, title: "Telefone e WhatsApp", description: "Fale com um especialista que conhece seu negócio. Segunda a sábado." },
-      { icon: MessageCircle, title: "Chat ao vivo", description: "Resposta em minutos dentro do próprio sistema, sem sair do fluxo." },
-      { icon: GraduationCap, title: "Academia V3ndor", description: "Vídeos, tutoriais e trilhas para sua equipe dominar o ERP." },
+      { icon: Mail, title: "E-mail", description: "Escreva para teorema@teorema.inf.br e receba resposta de um especialista." },
     ],
   },
 
@@ -251,8 +251,8 @@ const vendorPraxis: ProductContent = {
     headingPrefix: "Pronto para ter um ERP que ",
     headingHighlight: "não te limita?",
     description:
-      "Teste 14 dias grátis, sem cartão. Migramos seus dados e treinamos sua equipe. Se não gostar, tudo bem.",
-    primaryCta: { label: "Começar agora grátis", href: "#planos" },
+      "Migramos seus dados e treinamos sua equipe. Sem fidelidade, com suporte humano de verdade do primeiro dia em diante.",
+    primaryCta: { label: "Começar agora", href: "#planos" },
     secondaryCta: { label: "Agendar demonstração", href: "#suporte" },
     footnote: "✓ Sem fidelidade • ✓ Suporte humano • ✓ Implantação assistida",
   },
