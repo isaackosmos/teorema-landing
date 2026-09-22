@@ -28,9 +28,11 @@ export function Support({ content }: { content: SupportContent }) {
             </h2>
             <p className="mt-3 max-w-[560px] text-body text-muted">{content.description}</p>
           </div>
-          <div className="flex items-center gap-2 text-[13px] font-semibold text-ink">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" /> {content.statusLabel}
-          </div>
+          {content.statusLabel && (
+            <div className="flex items-center gap-2 text-[13px] font-semibold text-ink">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" /> {content.statusLabel}
+            </div>
+          )}
         </div>
 
         <div className={cn("mt-10 grid gap-4", columnClasses[content.channels.length] ?? "md:grid-cols-3")}>

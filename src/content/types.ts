@@ -77,18 +77,16 @@ export interface HeroContent {
   headlineLine1: string;
   headlineLine2Prefix: string;
   headlineHighlight: string;
-  subheadBold: string;
+  /** Optional bold lead-in clause before `subheadRest`. */
+  subheadBold?: string;
   subheadRest: string;
   primaryCta: CtaLink;
   secondaryCta: CtaLink;
-  socialProof: {
-    avatarCount: number;
-    customersLine: string;
-    customersSuffix: string;
-    rating: number;
-    ratingSuffix: string;
-  };
+  /** Short trust-signal line under the CTAs, e.g. ["100% web", "Acesso de onde estiver"]. */
+  trustBadges: string[];
   preview: HeroPreview;
+  /** Optional decorative background image behind the hero content. */
+  backgroundImage?: string;
 }
 
 export interface FeatureItem {
@@ -102,6 +100,8 @@ export interface FeaturesContent {
   heading: string;
   description: string;
   items: FeatureItem[];
+  /** Optional decorative background image behind the section. */
+  backgroundImage?: string;
 }
 
 export interface ProcessStep {
@@ -116,6 +116,8 @@ export interface ProcessContent {
   description: string;
   callout: { icon: LucideIcon; title: string; description: string };
   steps: ProcessStep[];
+  /** Optional decorative background image behind the section. */
+  backgroundImage?: string;
 }
 
 export interface PricingPlan {
@@ -132,15 +134,29 @@ export interface PricingPlan {
 export interface PricingContent {
   heading: string;
   description: string;
+  /** Empty when pricing isn't finalized yet — the section then renders the fallback CTA below instead of plan cards. */
   plans: PricingPlan[];
+  /** Fallback CTA shown when `plans` is empty. */
+  fallbackCta?: CtaLink;
+  fallbackSubtext?: string;
+  /** Optional decorative background image behind the section. */
+  backgroundImage?: string;
+}
+
+export interface BenefitItem {
+  title: string;
+  description: string;
 }
 
 export interface BenefitsContent {
   headingPrefix: string;
   headingHighlight: string;
   description: string;
-  complianceBadge: { icon: LucideIcon; label: string };
-  items: string[];
+  /** Omitted until a compliance claim (LGPD, hosting, etc.) is formally confirmed. */
+  complianceBadge?: { icon: LucideIcon; label: string };
+  items: BenefitItem[];
+  /** Optional decorative background image behind the section. */
+  backgroundImage?: string;
 }
 
 export interface AppShowcaseContent {
@@ -154,6 +170,8 @@ export interface AppShowcaseContent {
     stats: { label: string; value: string; tone: "brand" | "accent" }[];
     listItems: { title: string; subtitle: string }[];
   };
+  /** Optional decorative background image layered under the gradient card. */
+  backgroundImage?: string;
 }
 
 export interface SupportChannel {
@@ -165,7 +183,8 @@ export interface SupportChannel {
 export interface SupportContent {
   heading: string;
   description: string;
-  statusLabel: string;
+  /** Omitted until a real, backed response-time claim exists. */
+  statusLabel?: string;
   channels: SupportChannel[];
 }
 
@@ -181,13 +200,17 @@ export interface TestimonialsContent {
 }
 
 export interface CtaBannerContent {
-  badgeText: string;
+  /** Omitted until there's a real, time-bound offer to announce. */
+  badgeText?: string;
   headingPrefix: string;
   headingHighlight: string;
   description: string;
-  primaryCta: CtaLink;
+  /** Omitted when the section has a single, centered CTA instead of two. */
+  primaryCta?: CtaLink;
   secondaryCta: CtaLink;
   footnote: string;
+  /** Direct contact email shown alongside the site's general phone number. */
+  contactEmail?: string;
 }
 
 export interface FooterColumn {
@@ -197,7 +220,8 @@ export interface FooterColumn {
 
 export interface FooterContent {
   description: string;
-  complianceBadges: string[];
+  /** Omitted until the underlying claims (LGPD, hosting, SSL) are formally confirmed. */
+  complianceBadges?: string[];
   columns: FooterColumn[];
   contactColumnTitle: string;
   /** Copyright line. Use the literal token "{year}" — it is replaced at render time. */
@@ -209,6 +233,30 @@ export interface WhatsAppButtonContent {
   tooltip: string;
 }
 
+export interface EvolutionPanel {
+  icon: LucideIcon;
+  badge?: string;
+  title: string;
+  items: string[];
+}
+
+/**
+ * "Before / after" comparison section for a product that evolved from an
+ * earlier, narrower Teorema solution. Optional — see CLAUDE.md → "Optional
+ * sections"; a product with no prior-product story should omit it.
+ */
+export interface EvolutionContent {
+  badge: string;
+  heading: string;
+  description: string;
+  before: EvolutionPanel;
+  after: EvolutionPanel;
+  calloutIcon: LucideIcon;
+  calloutText: string;
+  /** Optional decorative background image behind the section. */
+  backgroundImage?: string;
+}
+
 /** Full content contract a product landing page must provide. */
 export interface ProductContent {
   meta: SiteMeta;
@@ -216,11 +264,14 @@ export interface ProductContent {
   hero: HeroContent;
   features: FeaturesContent;
   process: ProcessContent;
+  /** Optional — see CLAUDE.md → "Optional sections". */
+  evolution?: EvolutionContent;
   pricing: PricingContent;
   benefits: BenefitsContent;
   appShowcase: AppShowcaseContent;
   support: SupportContent;
-  testimonials: TestimonialsContent;
+  /** Optional — see CLAUDE.md → "Optional sections". */
+  testimonials?: TestimonialsContent;
   ctaBanner: CtaBannerContent;
   footer: FooterContent;
   whatsappButton: WhatsAppButtonContent;

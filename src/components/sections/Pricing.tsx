@@ -1,19 +1,41 @@
+import Image from "next/image";
 import { ArrowRight, Check } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { cn } from "@/lib/utils";
 import type { PricingContent } from "@/content/types";
 
 /**
- * Pricing tiers. Anchor target for the header's "Planos" nav link and
- * the default target for most CTAs across the page (`id="planos"`).
+ * Pricing tiers (`id="planos"` — no longer nav-linked while pricing is
+ * being finalized, but kept as a stable anchor for direct/campaign links).
+ * When `plans` is empty, renders a single fallback CTA instead of plan cards.
  */
 export function Pricing({ content }: { content: PricingContent }) {
   return (
-    <section id="planos" className="bg-white py-section-y">
-      <Container>
+    <section id="planos" className="relative overflow-hidden bg-white py-section-y">
+      {content.backgroundImage && (
+        <Image
+          src={content.backgroundImage}
+          alt=""
+          fill
+          aria-hidden
+          className="pointer-events-none select-none object-cover opacity-70"
+        />
+      )}
+      <Container className="relative">
         <SectionHeading heading={content.heading} description={content.description} align="center" className="mx-auto max-w-[720px]" />
 
+        {content.plans.length === 0 ? (
+          <div className="mx-auto mt-10 flex max-w-[480px] flex-col items-center gap-4 text-center">
+            {content.fallbackCta && (
+              <Button href={content.fallbackCta.href} size="lg">
+                {content.fallbackCta.label} <ArrowRight className="h-4 w-4" />
+              </Button>
+            )}
+            {content.fallbackSubtext && <p className="text-body-sm text-muted">{content.fallbackSubtext}</p>}
+          </div>
+        ) : (
         <div className="mx-auto mt-12 grid max-w-[1080px] gap-6 lg:grid-cols-3">
           {content.plans.map((plan) => (
             <div
@@ -67,6 +89,7 @@ export function Pricing({ content }: { content: PricingContent }) {
             </div>
           ))}
         </div>
+        )}
       </Container>
     </section>
   );

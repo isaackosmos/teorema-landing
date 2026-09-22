@@ -1,75 +1,78 @@
 import {
   Wallet,
   ShoppingCart,
+  ShoppingBag,
   Package,
   FileText,
-  Users,
-  Factory,
+  BarChart3,
+  Layers,
+  Globe,
   ShieldCheck,
   Smartphone,
+  Eye,
+  LayoutGrid,
   Check,
   Phone,
   Mail,
+  Monitor,
+  TrendingUp,
 } from "lucide-react";
 import type { ProductContent } from "@/content/types";
 
 /**
  * Content for the V3ndor Praxis (ERP) landing page.
- * Copy extracted verbatim from reference/vendor-praxis-prototype.html — kept
- * in Portuguese because that is this product's actual target-market copy.
+ * Copy follows the marketing content brief (2026-09) — only recursos
+ * already mapped for the current version of the Praxis are listed;
+ * unconfirmed claims (implantation SLAs, integrations, compliance
+ * badges, response-time stats) are left out until validated.
  */
 const vendorPraxis: ProductContent = {
   meta: {
     productName: "V3ndor Praxis",
-    logo: { src: "/logos/vendor-praxis-logo.jpg", alt: "V3ndor Praxis" },
+    logo: { src: "/logos/vendor-praxis-logo-gradient.png", alt: "V3ndor Praxis" },
     supportEmail: "teorema@teorema.inf.br",
     whatsapp: {
       phoneDisplay: "42-3035-4030",
-      link: "https://wa.me/554230354030?text=Olá!%20Quero%20conhecer%20o%20V3ndor%20Praxis%20-%20Seu%20negócio%20muda.%20Seu%20sistema%20acompanha.",
+      link: "https://wa.me/554230354030?text=Olá!%20Quero%20conhecer%20o%20V3ndor%20Praxis.",
     },
   },
 
   header: {
     nav: [
-      { label: "Plataforma", href: "#plataforma" },
-      { label: "Planos", href: "#planos" },
+      { label: "Plataforma", href: "#" },
+      { label: "Recursos", href: "#recursos" },
+      { label: "Por que V3ndor Praxis", href: "#por-que" },
       { label: "Suporte", href: "#suporte" },
-      { label: "Área Cliente", href: "#area" },
+      { label: "Área do Cliente", href: "#area" },
       { label: "Contato", href: "#contato" },
     ],
-    cta: { label: "Começar agora", href: "#planos" },
+    cta: { label: "Conheça o Praxis", href: "#recursos" },
   },
 
   hero: {
-    badgeText: "Novo • 100% em nuvem",
-    headlineLine1: "O ERP que cresce",
-    headlineLine2Prefix: "junto com a ",
-    headlineHighlight: "sua empresa.",
-    subheadBold: "Seu negócio muda. Seu sistema acompanha.",
+    badgeText: "100% WEB • GESTÃO INTEGRADA",
+    headlineLine1: "Sua empresa evolui.",
+    headlineLine2Prefix: "O ",
+    headlineHighlight: "V3ndor Praxis evolui com ela.",
     subheadRest:
-      " Unifique financeiro, vendas, estoque e fiscal em uma plataforma rápida, segura e sem limites para escalar.",
-    primaryCta: { label: "Começar agora", href: "#planos" },
-    secondaryCta: { label: "Ver plataforma", href: "#plataforma" },
-    socialProof: {
-      avatarCount: 3,
-      customersLine: "+2.847 empresas",
-      customersSuffix: "migraram este mês",
-      rating: 4.9,
-      ratingSuffix: "satisfação",
-    },
+      "Uma plataforma de gestão 100% web que integra os principais processos da sua empresa e permite ampliar recursos conforme o seu negócio cresce.",
+    primaryCta: { label: "Conheça o V3ndor Praxis", href: "#recursos" },
+    secondaryCta: { label: "Ver recursos", href: "#recursos" },
+    trustBadges: ["100% web", "Acesso de onde estiver", "Gestão integrada"],
+    backgroundImage: "/backgrounds/hero-waves.webp",
     preview: {
       windowTitle: "Financeiro Geral • Hoje",
       syncedLabel: "Sincronizado",
       stats: [
-        { label: "Financeiro", value: "R$ 284k", delta: "+12%", icon: Wallet, tone: "positive" },
+        { label: "Financeiro", value: "R$ 284 mil", delta: "+12%", icon: Wallet, tone: "positive" },
         { label: "Vendas", value: "1.248", delta: "+8%", icon: ShoppingCart, tone: "brand" },
         { label: "Estoque", value: "98,2%", delta: "Ok", icon: Package, tone: "accent" },
       ],
       chart: {
-        label: "Faturamento últimos 6 meses",
+        label: "Evolução do faturamento",
         values: [32, 48, 36, 64, 52, 80],
       },
-      ordersTitle: "Pedidos recentes",
+      ordersTitle: "Movimentações recentes",
       ordersLinkLabel: "ver todos",
       orders: [
         { id: "#3821", client: "Mercado Central", amount: "R$ 1.420,00", status: "Pago" },
@@ -84,126 +87,120 @@ const vendorPraxis: ProductContent = {
   },
 
   features: {
-    eyebrow: "Plataforma completa",
-    heading: "Tudo que você precisa em um só lugar",
+    eyebrow: "GESTÃO INTEGRADA",
+    heading: "Sua empresa em um único ambiente",
     description:
-      "Módulos integrados que conversam entre si. Sem integrações frágeis, sem retrabalho.",
+      "Vendas, estoque, financeiro, fiscal e informações gerenciais trabalhando de forma integrada para simplificar a rotina da sua empresa.",
     items: [
-      { icon: Wallet, title: "Financeiro Completo", description: "Fluxo de caixa, contas a pagar e receber, DRE e conciliação automática." },
-      { icon: ShoppingCart, title: "Vendas Inteligentes", description: "PDV, orçamentos, pedidos e comissões em um fluxo sem atrito." },
-      { icon: Package, title: "Estoque Preciso", description: "Controle por lote, validade, grade e inventário com rastreabilidade." },
-      { icon: FileText, title: "Fiscal Sem Dor", description: "NF-e, NFS-e, NFC-e e SPED com emissão e armazenamento automático." },
-      { icon: Users, title: "CRM e Clientes", description: "Histórico completo, funil e régua de relacionamento integrada." },
-      { icon: Factory, title: "Produção e OS", description: "Ordem de produção, apontamentos e cálculo de custo real." },
-      { icon: ShieldCheck, title: "Segurança Total", description: "Backup diário, criptografia e permissões granulares por usuário." },
-      { icon: Smartphone, title: "100% Mobile", description: "Acesse de qualquer lugar. App nativo e responsivo em nuvem." },
+      { icon: ShoppingCart, title: "Vendas e Orçamentos", description: "Crie orçamentos, transforme em pedidos e acompanhe suas vendas de forma simples e organizada." },
+      { icon: Package, title: "Estoque", description: "Controle entradas, saídas, inventário, movimentações, produtos, grades e disponibilidade de estoque." },
+      { icon: Wallet, title: "Financeiro", description: "Acompanhe contas a pagar e receber, movimentações financeiras, contas bancárias e fluxo de caixa." },
+      { icon: ShoppingBag, title: "Compras", description: "Organize pedidos de compra e acompanhe as movimentações relacionadas ao abastecimento da empresa." },
+      { icon: FileText, title: "Fiscal", description: "Tenha os recursos fiscais integrados à operação da empresa, com mais organização e segurança nas informações." },
+      { icon: BarChart3, title: "Gestão e Relatórios", description: "Acompanhe informações financeiras, vendas, estoque e outros dados importantes para apoiar suas decisões." },
+      { icon: Layers, title: "Produtos e Cadastros", description: "Centralize clientes, produtos, categorias, formas de pagamento e informações importantes da sua operação." },
+      { icon: Globe, title: "100% Web", description: "Acesse o V3ndor Praxis pelo navegador, de onde estiver, sem depender de uma única máquina." },
     ],
+    backgroundImage: "/backgrounds/features-waves.png",
   },
 
   process: {
-    badge: "Cresça com liberdade",
+    badge: "CRESÇA COM LIBERDADE",
     heading: "Uma plataforma que evolui com você",
     description:
-      "Do primeiro orçamento ao controle de múltiplas filiais. O V3ndor Praxis acompanha cada fase sem você precisar trocar de ERP.",
+      "Comece com os recursos que fazem sentido para sua empresa hoje e amplie sua gestão conforme novas necessidades surgirem. O V3ndor Praxis foi pensado para acompanhar cada etapa do seu negócio.",
     callout: {
       icon: ShieldCheck,
-      title: "Migração segura",
-      description: "Trazemos seus dados sem parar a operação",
+      title: "Evolução segura",
+      description: "Sua empresa evolui para uma plataforma mais completa com o acompanhamento da equipe Teorema.",
     },
     steps: [
-      { step: "01", title: "Comece simples", description: "Ative apenas os módulos que você precisa hoje. Sem complexidade." },
-      { step: "02", title: "Automatize processos", description: "Conecte vendas, estoque e financeiro. Elimine retrabalho e planilhas." },
-      { step: "03", title: "Escale sem travar", description: "Adicione filiais, usuários e integrações sem trocar de sistema." },
-      { step: "04", title: "Decida com dados", description: "Dashboards em tempo real para crescer com previsibilidade." },
+      { step: "01", title: "Comece com o que precisa", description: "Utilize os recursos necessários para sua operação atual, sem tornar sua rotina mais complicada." },
+      { step: "02", title: "Integre sua operação", description: "Centralize vendas, estoque, financeiro e demais processos importantes em um único ambiente." },
+      { step: "03", title: "Amplie quando precisar", description: "Novas necessidades surgiram? O Praxis está preparado para incorporar mais recursos à sua gestão." },
+      { step: "04", title: "Tenha informação para decidir", description: "Acompanhe dados e relatórios da sua empresa para tomar decisões com mais segurança." },
     ],
+    backgroundImage: "/backgrounds/hero-waves.webp",
+  },
+
+  evolution: {
+    badge: "UMA EVOLUÇÃO DO QUE VOCÊ JÁ CONHECE",
+    heading: "Do emissor de notas para uma plataforma de gestão completa.",
+    description:
+      "O V3ndor Praxis representa um novo passo na evolução das soluções Teorema. Além da emissão fiscal, sua empresa passa a contar com novos recursos para organizar e acompanhar diferentes áreas do negócio em um único ambiente.",
+    before: {
+      icon: Monitor,
+      title: "Emissor de Notas",
+      items: ["Emissão de notas", "Cadastro de clientes", "Cadastro de produtos", "Exportação de XML e DANFE", "Controles essenciais"],
+    },
+    after: {
+      icon: TrendingUp,
+      badge: "AGORA",
+      title: "V3ndor Praxis",
+      items: [
+        "Plataforma 100% web",
+        "Acesso de qualquer lugar",
+        "Vendas e orçamentos",
+        "Compras",
+        "Controle de estoque",
+        "Financeiro",
+        "Informações gerenciais",
+        "Novos recursos conforme a evolução da plataforma",
+      ],
+    },
+    calloutIcon: TrendingUp,
+    calloutText: "Você não está apenas mudando de sistema. Está ampliando as possibilidades da sua gestão.",
+    backgroundImage: "/backgrounds/evolution-waves.png",
   },
 
   pricing: {
-    heading: "Planos que acompanham seu momento",
-    description: "Transparente, sem fidelidade escondida. Cancele quando quiser.",
-    plans: [
-      {
-        name: "Starter",
-        price: "R$ 115",
-        priceSuffix: "/mês",
-        description: "Para quem está começando a organizar",
-        features: [
-          "1 usuário",
-          "1 empresa",
-          "Módulos financeiro, estoque e vendas",
-          "500 NFs/mês",
-          "Suporte humanizado",
-        ],
-        cta: { label: "Começar no Starter", href: "#contato" },
-        // Destaque fica no Starter porque é o único plano disponível hoje —
-        // o Business ainda não tem preço nem data de lançamento.
-        highlighted: true,
-      },
-      {
-        name: "Business",
-        // Sem preço definido: o plano ainda não foi lançado. Nenhuma feature
-        // listada até que o escopo do plano esteja fechado.
-        price: "Em breve",
-        description: "Para quem está escalando",
-        features: [],
-        cta: { label: "Quero ser avisado", href: "#contato" },
-      },
-      {
-        name: "Enterprise",
-        price: "Sob consulta",
-        description: "Para operações com múltiplas filiais",
-        features: [
-          "Usuários ilimitados",
-          "Filiais e centros de custo",
-          "Onboarding dedicado",
-          "Gerente de sucesso",
-          "SLA garantido",
-        ],
-        cta: {
-          label: "Falar com especialista",
-          href: "https://wa.me/554230354030?text=Olá!%20Quero%20conhecer%20o%20V3ndor%20Praxis%20-%20Seu%20negócio%20muda.%20Seu%20sistema%20acompanha.",
-          external: true,
-        },
-      },
-    ],
+    heading: "Uma solução para cada momento",
+    description:
+      "O V3ndor Praxis acompanha a necessidade da sua empresa. Cada empresa tem uma realidade diferente. Por isso, o V3ndor Praxis permite combinar recursos de acordo com as necessidades da sua operação.",
+    // Sem planos publicados ainda — os valores estão em definição com a
+    // equipe comercial. A seção renderiza o CTA de fallback abaixo.
+    plans: [],
+    fallbackCta: { label: "Fale com nossa equipe", href: "#contato" },
+    fallbackSubtext: "Conheça as possibilidades e encontre a configuração adequada para sua empresa.",
+    backgroundImage: "/backgrounds/hero-waves.webp",
   },
 
   benefits: {
-    headingPrefix: "Por que empresas escolhem o ",
-    headingHighlight: "V3ndor Praxis",
+    headingPrefix: "Por que escolher o ",
+    headingHighlight: "V3ndor Praxis?",
     description:
-      "Não somos apenas um ERP. Somos a base operacional que tira você da planilha e coloca no controle total, com suporte que realmente responde.",
-    complianceBadge: { icon: ShieldCheck, label: "LGPD compliant • Hospedado no Brasil" },
+      "Porque gestão não precisa ser complicada. O V3ndor Praxis une tecnologia, informação e facilidade de uso em uma plataforma preparada para acompanhar a evolução da sua empresa.",
     items: [
-      "Implantação assistida em até 7 dias",
-      "Suporte humano em menos de 3 minutos",
-      "100% em nuvem, sem servidor local",
-      "Integração com marketplaces e bancos",
-      "Atualizações constantes sem custo extra",
-      "API aberta para suas integrações",
-      "Treinamento incluso para toda equipe",
-      "Performance mesmo com alto volume",
-      "Dados criptografados e backup automático",
-      "Cresce junto: do MEI ao grande varejo",
+      { title: "100% web", description: "Acesse pelo navegador, sem ficar preso a uma única máquina." },
+      { title: "Gestão integrada", description: "Informações importantes da empresa reunidas em um mesmo ambiente." },
+      { title: "Mais mobilidade", description: "Acompanhe sua empresa de onde estiver." },
+      { title: "Mais controle", description: "Tenha informações organizadas para acompanhar sua operação." },
+      { title: "Recursos que evoluem", description: "Novas funcionalidades podem ser incorporadas conforme a necessidade do negócio." },
+      { title: "Atualizações da plataforma", description: "O sistema continua evoluindo para acompanhar novas demandas." },
+      { title: "Controle por usuários", description: "Organize o acesso às informações de acordo com cada usuário." },
+      { title: "Informação para decidir", description: "Consulte relatórios e informações importantes para sua gestão." },
+      { title: "Experiência Teorema", description: "Tecnologia desenvolvida por quem conhece a realidade das empresas." },
+      { title: "Suporte especializado", description: "Conte com uma equipe preparada para orientar sua empresa na utilização da solução." },
     ],
+    backgroundImage: "/backgrounds/hero-waves.webp",
   },
 
   appShowcase: {
     eyebrow: { icon: Smartphone, label: "Área do Cliente" },
-    heading: "Seu escritório no bolso, com governança total",
+    heading: "Sua empresa com você, onde estiver.",
     description:
-      "Acompanhe vendas em tempo real, aprove contas, libere pedidos e veja seu DRE onde estiver. Permissões por usuário para controle absoluto.",
+      "Acesse informações importantes da sua operação pelo V3ndor Praxis e acompanhe sua empresa com mais praticidade, mobilidade e controle.",
     pills: [
-      { icon: Wallet, label: "Dashboard executivo" },
-      { icon: Users, label: "Gestão de equipes" },
-      { icon: Check, label: "Sincronização instantânea" },
+      { icon: Eye, label: "Visão da empresa" },
+      { icon: LayoutGrid, label: "Informações organizadas" },
+      { icon: Globe, label: "Acesso pela web" },
     ],
-    cta: { label: "Acessar demonstração", href: "#contato" },
+    cta: { label: "Conhecer o V3ndor Praxis", href: "#contato" },
     mockup: {
       greeting: "Olá, Carlos \u{1F44B}",
       stats: [
-        { label: "Hoje", value: "R$ 12.840", tone: "brand" },
-        { label: "Pedidos", value: "24 novos", tone: "accent" },
+        { label: "Vendas hoje", value: "R$ 12.840", tone: "brand" },
+        { label: "Pedidos", value: "24", tone: "accent" },
       ],
       listItems: [
         { title: "Pedido #3821", subtitle: "Aguardando aprovação" },
@@ -211,63 +208,41 @@ const vendorPraxis: ProductContent = {
         { title: "Pedido #3823", subtitle: "Aguardando aprovação" },
       ],
     },
+    backgroundImage: "/backgrounds/hero-waves.webp",
   },
 
   support: {
-    heading: "Suporte que não te deixa na mão",
-    description: "Humano, rápido e especialista no seu segmento. Não é bot lendo script.",
-    statusLabel: "Online agora • Tempo médio 1m 42s",
+    heading: "Suporte para acompanhar sua empresa",
+    description: "Conte com uma equipe que conhece o sistema e está preparada para orientar você sempre que precisar.",
     channels: [
-      { icon: Phone, title: "Telefone e WhatsApp", description: "Fale com um especialista que conhece seu negócio. Segunda a sábado." },
-      { icon: Mail, title: "E-mail", description: "Escreva para teorema@teorema.inf.br e receba resposta de um especialista." },
+      { icon: Phone, title: "Telefone e WhatsApp", description: "Entre em contato com nossa equipe para tirar dúvidas e receber orientação sobre o V3ndor Praxis." },
+      { icon: Mail, title: "E-mail", description: "Envie sua solicitação para nossa equipe e receba o atendimento necessário." },
     ],
   },
 
-  testimonials: {
-    items: [
-      {
-        name: "Juliana M.",
-        role: "Varejo • 12 lojas",
-        text: "Saímos de 3 sistemas para 1. Fechamento que levava 3 dias agora leva 2 horas. Suporte é surreal de rápido.",
-        rating: 5,
-      },
-      {
-        name: "Rafael C.",
-        role: "Distribuição • 80 colaboradores",
-        text: "Implantação em 5 dias. O comercial acompanha pedidos pelo celular e o financeiro finalmente bate.",
-        rating: 5,
-      },
-      {
-        name: "Carlos E.",
-        role: "Indústria • Faturamento 12M",
-        text: "O Business nos deu visão de custo real. Descobrimos produtos com margem negativa que nem sabíamos.",
-        rating: 5,
-      },
-    ],
-  },
+  // Depoimentos ocultos temporariamente (omitidos) — os atuais eram
+  // fictícios. Reative com depoimentos reais de clientes Teorema.
 
   ctaBanner: {
-    badgeText: "Vagas limitadas para implantação este mês",
-    headingPrefix: "Pronto para ter um ERP que ",
-    headingHighlight: "não te limita?",
+    headingPrefix: "Sua empresa está pronta para o ",
+    headingHighlight: "próximo passo?",
     description:
-      "Migramos seus dados e treinamos sua equipe. Sem fidelidade, com suporte humano de verdade do primeiro dia em diante.",
-    primaryCta: { label: "Começar agora", href: "#planos" },
-    secondaryCta: { label: "Agendar demonstração", href: "#suporte" },
-    footnote: "✓ Sem fidelidade • ✓ Suporte humano • ✓ Implantação assistida",
+      "Conheça o V3ndor Praxis e descubra como uma plataforma 100% web pode trazer mais organização, mobilidade e controle para sua gestão.",
+    secondaryCta: { label: "Falar com a Teorema", href: "#suporte" },
+    footnote: "100% web • Gestão integrada • Suporte especializado",
+    contactEmail: "rui@teorema.inf.br",
   },
 
   footer: {
     description:
-      "O ERP em nuvem que cresce junto com a sua empresa. Financeiro, vendas, estoque e fiscal em um só lugar.",
-    complianceBadges: ["LGPD", "SSL 256bits", "BR Hosting"],
+      "V3ndor Praxis é a plataforma de gestão 100% web da Teorema, criada para simplificar processos e acompanhar a evolução da sua empresa.",
     columns: [
-      { title: "Plataforma", items: ["Financeiro", "Vendas e PDV", "Estoque", "Fiscal", "Produção"] },
-      { title: "Empresa", items: ["Sobre nós", "Planos", "Suporte", "Área Cliente", "Contato"] },
+      { title: "V3ndor Praxis", items: ["Plataforma", "Recursos", "100% Web", "Área do Cliente"] },
+      { title: "Teorema", items: ["Sobre a Teorema", "Suporte", "Contato"] },
     ],
-    contactColumnTitle: "Contato",
-    copyrightTemplate: "© {year} V3ndor Praxis. Todos os direitos reservados.",
-    legalLinks: ["Termos", "Privacidade"],
+    contactColumnTitle: "Atendimento",
+    copyrightTemplate: "© {year} Teorema Sistemas. Todos os direitos reservados.",
+    legalLinks: ["Termos de Uso", "Política de Privacidade"],
   },
 
   whatsappButton: {

@@ -1,12 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowRight, RefreshCw, TrendingUp } from "lucide-react";
+import { ArrowRight, Check, RefreshCw, TrendingUp } from "lucide-react";
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Pill } from "@/components/ui/Pill";
-import { StarRating } from "@/components/ui/StarRating";
 import { cn } from "@/lib/utils";
 import type { HeroContent, SiteMeta } from "@/content/types";
 
@@ -27,15 +26,24 @@ export function Hero({ meta, content }: { meta: SiteMeta; content: HeroContent }
   return (
     <section className="relative overflow-hidden bg-surface-subtle pb-20 pt-[140px] lg:pb-[120px]">
       <div className="pointer-events-none absolute inset-0 select-none overflow-hidden" aria-hidden>
-        <Image
-          src={meta.logo.src}
-          alt=""
-          width={1200}
-          height={390}
-          className="absolute left-1/2 top-[90px] w-[1200px] max-w-[90vw] -translate-x-1/2 opacity-[0.03] grayscale"
-        />
+        {content.backgroundImage ? (
+          <Image src={content.backgroundImage} alt="" fill className="object-cover" />
+        ) : (
+          <Image
+            src={meta.logo.src}
+            alt=""
+            width={1200}
+            height={390}
+            className="absolute left-1/2 top-[90px] w-[1200px] max-w-[90vw] -translate-x-1/2 opacity-[0.03] grayscale"
+          />
+        )}
       </div>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/80 to-surface-subtle" />
+      <div
+        className={cn(
+          "pointer-events-none absolute inset-0 bg-gradient-to-b to-surface-subtle",
+          content.backgroundImage ? "from-white/10" : "from-white/70",
+        )}
+      />
 
       <Container className="relative grid min-w-0 items-center gap-12 lg:grid-cols-2 lg:gap-8">
         <div className="min-w-0">
@@ -65,7 +73,9 @@ export function Hero({ meta, content }: { meta: SiteMeta; content: HeroContent }
             className="mt-5 max-w-[520px] text-body-lg text-muted"
           >
             <p>
-              <strong className="font-semibold text-ink">{content.subheadBold}</strong>
+              {content.subheadBold && (
+                <strong className="font-semibold text-ink">{content.subheadBold}</strong>
+              )}
               {content.subheadRest}
             </p>
           </motion.div>
@@ -84,27 +94,12 @@ export function Hero({ meta, content }: { meta: SiteMeta; content: HeroContent }
             </Button>
           </motion.div>
 
-          <div className="mt-8 flex items-center gap-3">
-            <div className="flex -space-x-2">
-              {Array.from({ length: content.socialProof.avatarCount }).map((_, i) => (
-                <div
-                  key={i}
-                  className="grid h-8 w-8 place-items-center rounded-full border-2 border-white bg-gray-200 text-[11px] font-bold text-gray-600"
-                  style={{ background: `hsl(${220 + i * 8} 20% 90%)` }}
-                >
-                  {String.fromCharCode(65 + i)}
-                </div>
-              ))}
-            </div>
-            <div className="text-body-sm leading-[1.2] text-muted">
-              <span className="font-semibold text-ink">{content.socialProof.customersLine}</span>{" "}
-              {content.socialProof.customersSuffix}
-              <br />
-              <span className="inline-flex items-center gap-1">
-                <StarRating rating={5} />
-                {content.socialProof.rating}/5 {content.socialProof.ratingSuffix}
+          <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-body-sm text-muted">
+            {content.trustBadges.map((badge) => (
+              <span key={badge} className="inline-flex items-center gap-1.5">
+                <Check className="h-3.5 w-3.5 text-brand" /> {badge}
               </span>
-            </div>
+            ))}
           </div>
         </div>
 
@@ -150,7 +145,7 @@ export function Hero({ meta, content }: { meta: SiteMeta; content: HeroContent }
             </div>
 
             <div className="px-5">
-              <div className="relative overflow-hidden rounded-md bg-gradient-to-br from-brand to-brand-light p-4">
+              <div className="relative overflow-hidden rounded-md bg-gradient-to-br from-ink-deep to-brand-hover p-4">
                 <div className="flex items-center justify-between text-white">
                   <span className="text-[13px] font-medium opacity-90">{preview.chart.label}</span>
                   <TrendingUp className="h-4 w-4" />

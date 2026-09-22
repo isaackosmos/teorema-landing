@@ -31,7 +31,7 @@ const config: Config = {
         // Ink — near-black text and dark surfaces.
         ink: {
           DEFAULT: "#0B1220", // headings, primary text, dark cards
-          deep: "#080F1F", // header/footer/CTA section background
+          deep: "#101B36", // header/footer/CTA section background
         },
         // Muted secondary text on light backgrounds.
         muted: "#5A667D",

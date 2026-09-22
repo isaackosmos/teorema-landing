@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { TrendingUp } from "lucide-react";
 import { motion } from "motion/react";
 import { Container } from "@/components/ui/Container";
@@ -12,8 +13,17 @@ import type { ProcessContent } from "@/content/types";
  */
 export function ProcessSteps({ content }: { content: ProcessContent }) {
   return (
-    <section className="border-y border-gray-100 bg-surface-subtle py-section-y">
-      <Container className="grid gap-12 lg:grid-cols-[420px_1fr]">
+    <section className="relative overflow-hidden border-y border-gray-100 bg-surface-subtle py-section-y">
+      {content.backgroundImage && (
+        <Image
+          src={content.backgroundImage}
+          alt=""
+          fill
+          aria-hidden
+          className="pointer-events-none select-none object-cover opacity-70"
+        />
+      )}
+      <Container className="relative grid gap-12 lg:grid-cols-[420px_1fr]">
         <div>
           <Pill tone="accent">{content.badge}</Pill>
           <h2 className="mt-5 font-heading text-[36px] font-bold leading-[0.95] tracking-tight text-ink md:text-[42px]">

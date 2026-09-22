@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -20,6 +21,15 @@ export function AppShowcase({ content }: { content: AppShowcaseContent }) {
     <section id="area" className="px-6 py-8">
       <Container className="rounded-2xl bg-gradient-to-br from-brand via-brand-hover to-ink-deep p-px">
         <div className="relative overflow-hidden rounded-[31px] bg-gradient-to-br from-brand/10 to-ink-deep">
+          {content.backgroundImage && (
+            <Image
+              src={content.backgroundImage}
+              alt=""
+              fill
+              aria-hidden
+              className="pointer-events-none select-none object-cover opacity-20 mix-blend-soft-light"
+            />
+          )}
           <div className="absolute inset-0">
             <div className="absolute -right-24 -top-24 h-[420px] w-[420px] rounded-full bg-accent opacity-[0.18] blur-[80px]" />
             <div className="absolute -bottom-24 -left-24 h-[420px] w-[420px] rounded-full bg-brand opacity-50 blur-[80px]" />

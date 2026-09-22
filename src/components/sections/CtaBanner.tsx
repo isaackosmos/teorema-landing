@@ -1,15 +1,15 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Pill } from "@/components/ui/Pill";
-import type { CtaBannerContent } from "@/content/types";
+import type { CtaBannerContent, SiteMeta } from "@/content/types";
 
 /**
  * Closing call-to-action banner on a dark background. Anchor target for
  * the header's "Contato" nav link and the final conversion point before
  * the Footer (`id="contato"`).
  */
-export function CtaBanner({ content }: { content: CtaBannerContent }) {
+export function CtaBanner({ meta, content }: { meta: SiteMeta; content: CtaBannerContent }) {
   return (
     <section id="contato" className="relative overflow-hidden bg-ink-deep py-section-y">
       <div className="absolute inset-0" aria-hidden>
@@ -18,9 +18,11 @@ export function CtaBanner({ content }: { content: CtaBannerContent }) {
       </div>
 
       <Container className="relative text-center">
-        <Pill tone="dark">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent" /> {content.badgeText}
-        </Pill>
+        {content.badgeText && (
+          <Pill tone="dark">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" /> {content.badgeText}
+          </Pill>
+        )}
 
         <h2 className="mx-auto mt-6 max-w-[760px] font-heading text-display font-bold leading-[0.95] tracking-tight text-white md:text-display-lg">
           {content.headingPrefix}
@@ -30,13 +32,34 @@ export function CtaBanner({ content }: { content: CtaBannerContent }) {
         <p className="mx-auto mt-5 max-w-[560px] text-body leading-relaxed text-white/60">{content.description}</p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Button href={content.primaryCta.href} size="xl" className="shadow-button-brand-lg">
-            {content.primaryCta.label} <ArrowRight className="h-4 w-4" />
-          </Button>
+          {content.primaryCta && (
+            <Button href={content.primaryCta.href} size="xl" className="shadow-button-brand-lg">
+              {content.primaryCta.label} <ArrowRight className="h-4 w-4" />
+            </Button>
+          )}
           <Button href={content.secondaryCta.href} variant="light" size="xl">
             {content.secondaryCta.label}
           </Button>
         </div>
+
+        {content.contactEmail && (
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[13px] text-white/70">
+            <a
+              href={meta.whatsapp.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 transition hover:text-white"
+            >
+              <Phone className="h-3.5 w-3.5" /> {meta.whatsapp.phoneDisplay}
+            </a>
+            <a
+              href={`mailto:${content.contactEmail}`}
+              className="inline-flex items-center gap-2 transition hover:text-white"
+            >
+              <Mail className="h-3.5 w-3.5" /> {content.contactEmail}
+            </a>
+          </div>
+        )}
 
         <div className="mt-6 text-[12px] text-white/40">{content.footnote}</div>
       </Container>

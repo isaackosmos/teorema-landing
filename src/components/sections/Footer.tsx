@@ -20,19 +20,21 @@ export function Footer({ meta, content }: { meta: SiteMeta; content: FooterConte
             alt={meta.logo.alt}
             width={400}
             height={130}
-            className="h-9 w-auto object-contain"
+            className="h-12 w-auto object-contain"
           />
           <p className="mt-4 max-w-[300px] text-body-sm leading-relaxed text-white/50">{content.description}</p>
-          <div className="mt-6 flex flex-wrap gap-2">
-            {content.complianceBadges.map((badge) => (
-              <div
-                key={badge}
-                className="grid h-8 place-items-center rounded-full border border-white/10 bg-white/10 px-3 text-[11px] text-white/70"
-              >
-                {badge}
-              </div>
-            ))}
-          </div>
+          {content.complianceBadges && (
+            <div className="mt-6 flex flex-wrap gap-2">
+              {content.complianceBadges.map((badge) => (
+                <div
+                  key={badge}
+                  className="grid h-8 place-items-center rounded-full border border-white/10 bg-white/10 px-3 text-[11px] text-white/70"
+                >
+                  {badge}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {content.columns.map((column) => (

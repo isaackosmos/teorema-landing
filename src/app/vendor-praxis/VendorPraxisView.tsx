@@ -4,6 +4,7 @@ import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
 import { Features } from "@/components/sections/Features";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
+import { ProductEvolution } from "@/components/sections/ProductEvolution";
 import { Pricing } from "@/components/sections/Pricing";
 import { Benefits } from "@/components/sections/Benefits";
 import { AppShowcase } from "@/components/sections/AppShowcase";
@@ -32,12 +33,13 @@ export function VendorPraxisView() {
       <Hero meta={content.meta} content={content.hero} />
       <Features content={content.features} />
       <ProcessSteps content={content.process} />
+      {content.evolution && <ProductEvolution content={content.evolution} />}
       <Pricing content={content.pricing} />
       <Benefits content={content.benefits} />
       <AppShowcase content={content.appShowcase} />
       <Support content={content.support} />
-      <Testimonials content={content.testimonials} />
-      <CtaBanner content={content.ctaBanner} />
+      {content.testimonials && <Testimonials content={content.testimonials} />}
+      <CtaBanner meta={content.meta} content={content.ctaBanner} />
       <Footer meta={content.meta} content={content.footer} />
       <WhatsAppFloatingButton meta={content.meta} content={content.whatsappButton} />
     </main>

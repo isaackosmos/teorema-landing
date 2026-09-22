@@ -52,7 +52,7 @@ not every component.
 |---|---|---|
 | `brand` | `DEFAULT #0F52FF`, `hover`, `light`, `tint`, `tint-border` | Primary actions, links, active states |
 | `accent` | `DEFAULT #8FE000` (lime), `ink`, `ink-alt`, `soft`, `soft-border` | "Growth"/positive signal, used sparingly |
-| `ink` | `DEFAULT #0B1220`, `deep #080F1F` | Headings/text, dark surfaces (header, footer, CTA band) |
+| `ink` | `DEFAULT #0B1220`, `deep #101B36` | Headings/text, dark surfaces (header, footer, CTA band) |
 | `muted` | `#5A667D` | Secondary text on light backgrounds |
 | `surface` | `DEFAULT #FFFFFF`, `subtle #FCFCFD` | Page/section backgrounds |
 | `star`, `whatsapp` | `#FFC224`, `#25D366` | Single-purpose literal-brand colors |
@@ -74,24 +74,29 @@ fixed order:
 2. `Hero`
 3. `Features`
 4. `ProcessSteps`
-5. `Pricing`
-6. `Benefits`
-7. `AppShowcase` *(optional — see below)*
-8. `Support`
-9. `Testimonials`
-10. `CtaBanner`
-11. `Footer` (always last in normal flow)
-12. `WhatsAppFloatingButton` (fixed, outside normal flow, rendered last)
+5. `ProductEvolution` *(optional — see below)*
+6. `Pricing`
+7. `Benefits`
+8. `AppShowcase` *(optional — see below)*
+9. `Support`
+10. `Testimonials` *(optional — see below)*
+11. `CtaBanner`
+12. `Footer` (always last in normal flow)
+13. `WhatsAppFloatingButton` (fixed, outside normal flow, rendered last)
 
 Don't reorder sections for a single product — the anchor-linked nav
-(`#plataforma`, `#planos`, `#suporte`, `#area`, `#contato`) assumes this
+(`#recursos`, `#por-que`, `#suporte`, `#area`, `#contato`) assumes this
 order. If a product's story genuinely needs a different order, that's a
 page-level decision to make deliberately, and this doc should be updated
 to say so.
 
 **Optional sections:** `AppShowcase` assumes a companion customer
-app/portal. A product without one should omit it from its page
-composition rather than rendering it with fabricated content.
+app/portal. `ProductEvolution` assumes the product replaces an earlier,
+narrower Teorema solution (a before/after story). `Testimonials` needs
+real customer quotes — don't ship it with fabricated ones. A product
+without one of these should omit that field from its content file
+(the type marks each optional) rather than rendering the section with
+fabricated content.
 
 ## Content/component separation rule
 
