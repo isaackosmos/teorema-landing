@@ -77,7 +77,7 @@ const config: Config = {
         "h2-lg": ["40px", { lineHeight: "1.08", letterSpacing: "-0.02em" }],
         // Hero headline only.
         h1: ["40px", { lineHeight: "1.02", letterSpacing: "-0.03em" }],
-        "h1-lg": ["52px", { lineHeight: "1.02", letterSpacing: "-0.03em" }],
+        "h1-lg": ["50px", { lineHeight: "1.02", letterSpacing: "-0.03em" }],
         // High-emphasis display heading, reserved for the closing CTA banner.
         display: ["36px", { lineHeight: "0.95", letterSpacing: "-0.02em" }],
         "display-lg": ["56px", { lineHeight: "0.95", letterSpacing: "-0.02em" }],
