@@ -45,7 +45,7 @@ export function Hero({ meta, content }: { meta: SiteMeta; content: HeroContent }
         </div>
       )}
 
-      <Container className="relative grid min-w-0 items-center gap-12 lg:grid-cols-[minmax(0,11fr)_minmax(0,13fr)] lg:gap-10">
+      <Container className="relative grid min-w-0 items-center gap-12 xl:grid-cols-[minmax(0,11fr)_minmax(0,13fr)] xl:gap-10">
         <div className="min-w-0">
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <Pill tone="accent">{content.badgeText}</Pill>
@@ -102,7 +102,7 @@ export function Hero({ meta, content }: { meta: SiteMeta; content: HeroContent }
           </div>
         </div>
 
-        <div className="relative min-w-0">
+        <div className="relative mx-auto w-full min-w-0 max-w-[760px] xl:max-w-none">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -258,10 +258,10 @@ export function Hero({ meta, content }: { meta: SiteMeta; content: HeroContent }
               transition={{ duration: 3 + i * 0.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.6 }}
               className={cn(
                 // Only shown once the hero switches to its two-column
-                // layout (lg:) — below that, the card is full-width and
+                // layout (xl:) — below that, the card is full-width and
                 // this chip's negative offset would sit under the fixed
                 // WhatsApp button (see WhatsAppFloatingButton).
-                "absolute hidden items-center gap-3 rounded-lg border border-gray-100 bg-white px-4 py-3 shadow-pill lg:flex",
+                "absolute hidden items-center gap-3 rounded-lg border border-gray-100 bg-white px-4 py-3 shadow-pill xl:flex",
                 notePositionClasses[note.position],
               )}
             >

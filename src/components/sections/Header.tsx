@@ -29,7 +29,7 @@ export function Header({ meta, content }: { meta: SiteMeta; content: HeaderConte
           />
         </a>
 
-        <nav className="hidden items-center gap-7 lg:flex">
+        <nav className="hidden items-center gap-7 xl:flex">
           {content.nav.map((link) => (
             <a
               key={link.label}
@@ -46,7 +46,7 @@ export function Header({ meta, content }: { meta: SiteMeta; content: HeaderConte
 
         <button
           onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 place-items-center rounded-full bg-brand-tint text-ink lg:hidden"
+          className="grid h-10 w-10 place-items-center rounded-full bg-brand-tint text-ink xl:hidden"
           aria-label="Menu"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -59,7 +59,7 @@ export function Header({ meta, content }: { meta: SiteMeta; content: HeaderConte
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute inset-x-0 top-header border-y border-gray-100 bg-white px-6 py-8 shadow-card-hover lg:hidden"
+            className="absolute inset-x-0 top-header border-y border-gray-100 bg-white px-6 py-8 shadow-card-hover xl:hidden"
           >
             <div className="flex flex-col gap-6">
               {content.nav.map((link) => (
