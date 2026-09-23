@@ -5,7 +5,6 @@ import {
   Package,
   FileText,
   BarChart3,
-  Layers,
   Globe,
   ShieldCheck,
   Smartphone,
@@ -21,6 +20,10 @@ import {
   Cloud,
   Clock,
   Headphones,
+  CircleDollarSign,
+  ClipboardList,
+  Receipt,
+  Tablet,
 } from "lucide-react";
 import type { ProductContent } from "@/content/types";
 
@@ -116,16 +119,15 @@ const vendorPraxis: ProductContent = {
     description:
       "Vendas, estoque, financeiro, fiscal e informações gerenciais trabalhando de forma integrada para simplificar a rotina da sua empresa.",
     items: [
-      { icon: ShoppingCart, title: "Vendas e Orçamentos", description: "Crie orçamentos, transforme em pedidos e acompanhe suas vendas de forma simples e organizada." },
-      { icon: Package, title: "Estoque", description: "Controle entradas, saídas, inventário, movimentações, produtos, grades e disponibilidade de estoque." },
-      { icon: Wallet, title: "Financeiro", description: "Acompanhe contas a pagar e receber, movimentações financeiras, contas bancárias e fluxo de caixa." },
-      { icon: ShoppingBag, title: "Compras", description: "Organize pedidos de compra e acompanhe as movimentações relacionadas ao abastecimento da empresa." },
-      { icon: FileText, title: "Fiscal", description: "Tenha os recursos fiscais integrados à operação da empresa, com mais organização e segurança nas informações." },
-      { icon: BarChart3, title: "Gestão e Relatórios", description: "Acompanhe informações financeiras, vendas, estoque e outros dados importantes para apoiar suas decisões." },
-      { icon: Layers, title: "Produtos e Cadastros", description: "Centralize clientes, produtos, categorias, formas de pagamento e informações importantes da sua operação." },
-      { icon: Globe, title: "100% Web", description: "Acesse o V3ndor Praxis pelo navegador, de onde estiver, sem depender de uma única máquina." },
+      { icon: ShoppingCart, title: "Vendas e Orçamentos", description: "Crie orçamentos, transforme em pedidos e acompanhe suas vendas de forma simples." },
+      { icon: Package, title: "Estoque", description: "Controle entradas, saídas, inventário, produtos, grades e disponibilidade." },
+      { icon: CircleDollarSign, title: "Financeiro", description: "Acompanhe contas a pagar e receber, contas bancárias e fluxo de caixa." },
+      { icon: ClipboardList, title: "Compras", description: "Organize pedidos de compra e acompanhe o abastecimento da empresa." },
+      { icon: Receipt, title: "Fiscal", description: "Tenha os recursos fiscais integrados à operação, com mais organização e segurança." },
+      { icon: BarChart3, title: "Gestão e Relatórios", description: "Acompanhe informações importantes para apoiar suas decisões." },
+      { icon: Users, title: "Produtos e Cadastros", description: "Centralize clientes, produtos, categorias e formas de pagamento." },
+      { icon: Tablet, title: "100% Web", description: "Acesse o V3ndor Praxis pelo navegador, de onde estiver, sem depender de uma única máquina." },
     ],
-    backgroundImage: "/backgrounds/features-waves.png",
   },
 
   process: {
