@@ -273,17 +273,34 @@ const vendorPraxis: ProductContent = {
       { icon: BarChart3, label: "Gestão integrada" },
       { icon: Headphones, label: "Suporte especializado" },
     ],
-    contactEmail: "rui@teorema.inf.br",
+    // contactEmail ("rui@teorema.inf.br") omitted — the reference layout has
+    // no phone/email row in the banner. Restore it here to show it again.
   },
 
   footer: {
     description:
       "V3ndor Praxis é a plataforma de gestão 100% web da Teorema, criada para simplificar processos e acompanhar a evolução da sua empresa.",
     columns: [
-      { title: "V3ndor Praxis", items: ["Plataforma", "Recursos", "100% Web", "Área do Cliente"] },
-      { title: "Teorema", items: ["Sobre a Teorema", "Suporte", "Contato"] },
+      {
+        title: "V3ndor Praxis",
+        items: [
+          { label: "Plataforma", href: "#" },
+          { label: "Recursos", href: "#recursos" },
+          { label: "100% Web", href: "#recursos" },
+          { label: "Área do Cliente", href: "#area" },
+        ],
+      },
+      {
+        title: "Teorema",
+        items: [
+          { label: "Sobre a Teorema", href: "https://teorema.inf.br/sobre/", external: true },
+          { label: "Suporte", href: "https://dicas.teorema.inf.br/", external: true },
+          { label: "Contato", href: "#contato" },
+        ],
+      },
     ],
     contactColumnTitle: "Atendimento",
+    contactLabels: { phone: "Telefone", whatsapp: "WhatsApp", email: "E-mail" },
     copyrightTemplate: "© {year} Teorema Sistemas. Todos os direitos reservados.",
     legalLinks: ["Termos de Uso", "Política de Privacidade"],
   },

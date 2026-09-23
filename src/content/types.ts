@@ -248,7 +248,8 @@ export interface CtaBannerContent {
 
 export interface FooterColumn {
   title: string;
-  items: string[];
+  /** Plain labels render as text; links render as anchors. */
+  items: (string | CtaLink)[];
 }
 
 export interface FooterContent {
@@ -257,6 +258,11 @@ export interface FooterContent {
   complianceBadges?: string[];
   columns: FooterColumn[];
   contactColumnTitle: string;
+  /**
+   * Short link labels for the contact column (e.g. "Telefone", "E-mail").
+   * When omitted, the raw phone number and email address are shown instead.
+   */
+  contactLabels?: { phone: string; whatsapp: string; email: string };
   /** Copyright line. Use the literal token "{year}" — it is replaced at render time. */
   copyrightTemplate: string;
   legalLinks: string[];

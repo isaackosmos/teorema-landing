@@ -20,6 +20,7 @@ const twMerge = extendTailwindMerge({
             "body-lg",
             "eyebrow",
             "h4",
+            "h3",
             "h2",
             "h2-lg",
             "h1",

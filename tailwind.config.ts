@@ -76,6 +76,8 @@ const config: Config = {
         // Standard section heading, e.g. "Tudo que você precisa em um só lugar".
         h2: ["32px", { lineHeight: "1.1", letterSpacing: "-0.01em" }],
         "h2-lg": ["40px", { lineHeight: "1.08", letterSpacing: "-0.02em" }],
+        // Heading for compact bands (support strip, closing CTA banner).
+        h3: ["28px", { lineHeight: "1.15", letterSpacing: "-0.01em" }],
         // Hero headline only.
         h1: ["40px", { lineHeight: "1.02", letterSpacing: "-0.03em" }],
         "h1-lg": ["50px", { lineHeight: "1.02", letterSpacing: "-0.03em" }],

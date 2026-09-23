@@ -53,12 +53,12 @@ not every component.
 | `brand` | `DEFAULT #0F52FF`, `hover`, `light`, `tint`, `tint-border` | Primary actions, links, active states |
 | `accent` | `DEFAULT #8FE000` (lime), `ink`, `ink-alt`, `soft`, `soft-border`, `strong #5CB81C` | "Growth"/positive signal, used sparingly; `strong` fills the check badges |
 | `ink` | `DEFAULT #0B1220`, `deep #101B36` | Headings/text; `deep` for the phone-mockup frame |
-| `navy` | `DEFAULT #0A1B4D`, `mid #11318A` | Dark-blue surfaces (callout cards, CTA banner, mockup sidebar), usually as a `from-navy to-navy-mid` gradient |
+| `navy` | `DEFAULT #0A1B4D`, `mid #11318A`, `teal #0B2E2B` | Dark-blue surfaces (callout cards, CTA banner, mockup sidebar), usually as a `from-navy to-navy-mid` gradient; `teal` is the dark-green start of the "Evolução segura" callout gradient |
 | `muted` | `#5A667D` | Secondary text on light backgrounds |
 | `surface` | `DEFAULT #FFFFFF`, `subtle #FCFCFD`, `tint #F4F7FF` | Page/section backgrounds; `tint` is the pale-blue alternate section |
 | `star`, `whatsapp` | `#FFC224`, `#25D366` | Single-purpose literal-brand colors |
 | `fontFamily` | `heading` (Sora, via `--font-heading`), `sans` (Inter, via `--font-sans`) | Loaded with `next/font/google` in `app/layout.tsx` |
-| `fontSize` | `body-xs`/`body-sm`/`body`/`body-lg`, `eyebrow`, `h4`, `h2`/`h2-lg`, `h1`/`h1-lg`, `display`/`display-lg` | Semantic type scale — `h1` is hero-only, `display` is CTA-banner-only |
+| `fontSize` | `body-xs`/`body-sm`/`body`/`body-lg`, `eyebrow`, `h4`, `h3`, `h2`/`h2-lg`, `h1`/`h1-lg`, `display`/`display-lg` | Semantic type scale — `h1` is hero-only, `h3` is for compact bands (support strip, CTA banner). Any new size must also be added to the `font-size` list in `src/lib/utils.ts`, or `cn()` will drop it |
 | `spacing` | `header` (72px), `section-y` (96px), `section-y-sm` (80px) | Fixed header height, standard section vertical rhythm |
 | `boxShadow` | `card`, `card-hover`, `elevated`, `pill`, `button-brand(-lg)`, `dark` | Named elevation levels instead of ad hoc shadow values |
 

@@ -1,6 +1,5 @@
 import { ArrowRight, Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { Container } from "@/components/ui/Container";
 import { Pill } from "@/components/ui/Pill";
 import type { CtaBannerContent, CtaLink, SiteMeta } from "@/content/types";
 
@@ -11,29 +10,32 @@ function linkProps(cta: CtaLink) {
 }
 
 /**
- * Closing call-to-action: a rounded navy card with the heading, a short
- * pitch plus trust signals, and the CTAs. Anchor target for the header's
+ * Closing call-to-action: a rounded navy band — slightly wider than the
+ * page container — with the heading, a short pitch plus trust signals,
+ * and the CTAs side by side from xl. Anchor target for the header's
  * "Contato" nav link and the final conversion point before the Footer
  * (`id="contato"`).
  */
 export function CtaBanner({ meta, content }: { meta: SiteMeta; content: CtaBannerContent }) {
   return (
-    <section id="contato" className="bg-white py-8">
-      <Container>
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy via-navy to-navy-mid shadow-elevated">
+    <section id="contato" className="bg-white py-4">
+      {/* Container width (1280px) plus 48px each side, so the band's edges
+          sit just outside the content column like the reference. */}
+      <div className="mx-auto w-full max-w-[1376px] px-4 sm:px-6">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-navy via-navy to-navy-mid shadow-elevated">
           <div className="absolute inset-0" aria-hidden>
-            <div className="absolute -right-24 -top-32 h-[360px] w-[520px] rounded-full bg-brand opacity-40 blur-[120px]" />
-            <div className="absolute -bottom-32 left-1/3 h-[260px] w-[420px] rounded-full bg-brand-light opacity-20 blur-[120px]" />
+            <div className="absolute -bottom-40 right-0 h-[320px] w-[620px] rounded-full bg-brand opacity-50 blur-[110px]" />
+            <div className="absolute -top-32 left-1/3 h-[220px] w-[420px] rounded-full bg-brand-light opacity-10 blur-[100px]" />
           </div>
 
-          <div className="relative grid gap-8 px-6 py-10 md:px-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_auto] lg:items-center">
+          <div className="relative grid gap-6 px-6 py-8 md:px-10 lg:grid-cols-2 lg:items-center xl:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_auto] xl:gap-8">
             <div>
               {content.badgeText && (
                 <Pill tone="dark" className="mb-4">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent" /> {content.badgeText}
                 </Pill>
               )}
-              <h2 className="font-heading text-h2 font-bold text-white">
+              <h2 className="font-heading text-h3 font-bold text-white">
                 {content.headingPrefix}
                 {content.headingHighlight}
               </h2>
@@ -42,7 +44,7 @@ export function CtaBanner({ meta, content }: { meta: SiteMeta; content: CtaBanne
             <div>
               <p className="text-body-sm leading-relaxed text-white/75">{content.description}</p>
               {content.highlights ? (
-                <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-body-xs text-white/70">
+                <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-body-xs text-white/70">
                   {content.highlights.map((item) => (
                     <span key={item.label} className="inline-flex items-center gap-2">
                       <item.icon className="h-4 w-4 text-white/80" /> {item.label}
@@ -72,19 +74,28 @@ export function CtaBanner({ meta, content }: { meta: SiteMeta; content: CtaBanne
               )}
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <div className="flex flex-col gap-3 sm:flex-row lg:col-span-2 xl:col-span-1">
               {content.primaryCta && (
-                <Button {...linkProps(content.primaryCta)} size="lg" className="h-auto min-h-12 py-3 text-center shadow-button-brand-lg">
+                <Button
+                  {...linkProps(content.primaryCta)}
+                  size="md"
+                  className="h-auto min-h-11 py-2.5 text-center shadow-button-brand-lg"
+                >
                   {content.primaryCta.label} <ArrowRight className="h-4 w-4" />
                 </Button>
               )}
-              <Button {...linkProps(content.secondaryCta)} variant="outline-light" size="lg" className="h-auto min-h-12 py-3 text-center">
+              <Button
+                {...linkProps(content.secondaryCta)}
+                variant="outline-light"
+                size="md"
+                className="h-auto min-h-11 py-2.5 text-center"
+              >
                 {content.secondaryCta.label}
               </Button>
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
