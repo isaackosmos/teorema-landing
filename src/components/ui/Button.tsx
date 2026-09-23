@@ -6,10 +6,12 @@ const variantClasses = {
   primary: "bg-brand text-white hover:bg-brand-hover shadow-button-brand",
   // Near-black pill — secondary emphasis on light sections.
   dark: "bg-ink text-white hover:bg-black",
-  // White pill with a hairline border — secondary action on light sections.
-  outline: "bg-white text-ink border border-ink/10 hover:bg-gray-50",
+  // White pill with a blue hairline border — secondary action on light sections.
+  outline: "bg-white text-ink border border-brand/25 hover:border-brand hover:text-brand",
   // White pill with no border — primary/secondary action on dark sections.
   light: "bg-white text-ink hover:bg-gray-100",
+  // Transparent pill with a white border — secondary action on dark sections.
+  "outline-light": "border border-white/50 text-white hover:border-white hover:bg-white/10",
 } as const;
 
 const sizeClasses = {

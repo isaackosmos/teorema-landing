@@ -8,12 +8,13 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { FeaturesContent } from "@/content/types";
 
 /**
- * Feature grid — "everything in one place". Anchor target for the
- * header's "Recursos" nav link (`id="recursos"`).
+ * Feature grid — "everything in one place": the section heading on the
+ * left, module cards on the right. Anchor target for the header's
+ * "Recursos" nav link (`id="recursos"`).
  */
 export function Features({ content }: { content: FeaturesContent }) {
   return (
-    <section id="recursos" className="relative overflow-hidden border-t border-gray-100 bg-white py-section-y">
+    <section id="recursos" className="relative overflow-hidden border-t border-gray-100 bg-white py-section-y-sm">
       {content.backgroundImage && (
         <Image
           src={content.backgroundImage}
@@ -23,15 +24,15 @@ export function Features({ content }: { content: FeaturesContent }) {
           className="pointer-events-none select-none object-cover opacity-70"
         />
       )}
-      <Container className="relative">
+      <Container className="relative grid gap-10 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:items-center">
         <SectionHeading
           eyebrow={content.eyebrow}
           heading={content.heading}
           description={content.description}
-          className="max-w-[640px]"
+          className="max-w-[440px]"
         />
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {content.items.map((item, i) => (
             <motion.div
               key={item.title}
@@ -39,10 +40,10 @@ export function Features({ content }: { content: FeaturesContent }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.04 }}
-              className="group rounded-xl border border-gray-100 bg-surface-subtle p-6 transition hover:border-gray-200 hover:shadow-card-hover"
+              className="group rounded-lg border border-gray-100 bg-white p-5 shadow-card transition hover:border-brand-tint-border hover:shadow-card-hover"
             >
-              <IconTile icon={item.icon} tone="dark" className="group-hover:bg-brand" />
-              <div className="mt-4 text-[16px] font-bold leading-tight text-ink">{item.title}</div>
+              <IconTile icon={item.icon} className="group-hover:bg-brand group-hover:text-white" />
+              <div className="mt-4 text-[15px] font-bold leading-tight text-ink">{item.title}</div>
               <div className="mt-2 text-body-sm leading-[1.5] text-muted">{item.description}</div>
             </motion.div>
           ))}

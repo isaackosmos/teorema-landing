@@ -27,11 +27,19 @@ const config: Config = {
           "ink-alt": "#3A5A00",
           soft: "#E8FFB0", // light fill
           "soft-border": "#D6F58A",
+          strong: "#5CB81C", // filled check badges (white glyph on top)
         },
         // Ink — near-black text and dark surfaces.
         ink: {
           DEFAULT: "#0B1220", // headings, primary text, dark cards
-          deep: "#101B36", // header/footer/CTA section background
+          deep: "#101B36", // phone-mockup frame, legacy dark surfaces
+        },
+        // Navy — the brand's dark-blue surfaces: callout cards, the CTA
+        // banner, the dashboard mockup sidebar. Usually used as a
+        // `from-navy to-navy-mid` gradient.
+        navy: {
+          DEFAULT: "#0A1B4D",
+          mid: "#11318A",
         },
         // Muted secondary text on light backgrounds.
         muted: "#5A667D",
@@ -39,6 +47,7 @@ const config: Config = {
         surface: {
           DEFAULT: "#FFFFFF",
           subtle: "#FCFCFD", // off-white section background
+          tint: "#F4F7FF", // pale-blue section background
         },
         // Single-purpose accents that show up as literal brand colors
         // (star ratings, WhatsApp), kept as tokens so they're never
@@ -65,10 +74,10 @@ const config: Config = {
         h4: ["17px", { lineHeight: "1.3" }],
         // Standard section heading, e.g. "Tudo que você precisa em um só lugar".
         h2: ["32px", { lineHeight: "1.1", letterSpacing: "-0.01em" }],
-        "h2-lg": ["44px", { lineHeight: "1.05", letterSpacing: "-0.02em" }],
+        "h2-lg": ["40px", { lineHeight: "1.08", letterSpacing: "-0.02em" }],
         // Hero headline only.
-        h1: ["40px", { lineHeight: "0.95", letterSpacing: "-0.03em" }],
-        "h1-lg": ["54px", { lineHeight: "0.95", letterSpacing: "-0.03em" }],
+        h1: ["40px", { lineHeight: "1.02", letterSpacing: "-0.03em" }],
+        "h1-lg": ["52px", { lineHeight: "1.02", letterSpacing: "-0.03em" }],
         // High-emphasis display heading, reserved for the closing CTA banner.
         display: ["36px", { lineHeight: "0.95", letterSpacing: "-0.02em" }],
         "display-lg": ["56px", { lineHeight: "0.95", letterSpacing: "-0.02em" }],

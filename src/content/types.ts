@@ -25,6 +25,8 @@ export interface CtaLink {
 export interface SiteMeta {
   productName: string;
   logo: { src: string; alt: string };
+  /** Logo variant for dark surfaces (the hero mockup sidebar). Falls back to the product name as text. */
+  logoOnDark?: { src: string; alt: string };
   supportEmail: string;
   whatsapp: {
     /** Human-readable phone number, e.g. "42-3035-4030". */
@@ -48,28 +50,50 @@ export interface HeroStat {
 }
 
 export interface HeroOrder {
-  id: string;
-  client: string;
+  /** e.g. "Pedido #3821". */
+  title: string;
+  /** e.g. "Cliente: Mercado Central". */
+  subtitle: string;
   amount: string;
   status: string;
+  statusTone: "positive" | "brand" | "warning";
 }
 
 export interface HeroFloatingNote {
   icon: LucideIcon;
   title: string;
-  subtitle: string;
-  position: "top-left" | "bottom-right";
+  subtitle?: string;
+  position: "top-left" | "top-right" | "bottom-left" | "bottom-right";
+  /** `positive` renders the icon on a filled green badge. Defaults to `brand`. */
+  tone?: "brand" | "positive";
 }
 
+/** Stylized dashboard screenshot shown beside the hero copy. */
 export interface HeroPreview {
-  windowTitle: string;
-  syncedLabel: string;
+  /** Sidebar menu of the mockup; the first item renders as the active one. */
+  sidebar: { icon: LucideIcon; label: string }[];
+  searchPlaceholder: string;
+  userName: string;
+  title: string;
+  subtitle: string;
   stats: HeroStat[];
-  chart: { label: string; values: number[] };
+  chart: {
+    label: string;
+    /** Bar heights as a percentage of the chart height. */
+    values: number[];
+    /** One axis label per value. */
+    labels: string[];
+    /** Legend entries — first is brand blue, second accent green. */
+    legend?: [string, string];
+  };
   ordersTitle: string;
-  ordersLinkLabel: string;
   orders: HeroOrder[];
   floatingNotes: HeroFloatingNote[];
+}
+
+export interface TrustBadge {
+  icon?: LucideIcon;
+  label: string;
 }
 
 export interface HeroContent {
@@ -77,13 +101,15 @@ export interface HeroContent {
   headlineLine1: string;
   headlineLine2Prefix: string;
   headlineHighlight: string;
+  /** Optional closing line after the highlight, rendered in the regular heading color. */
+  headlineSuffix?: string;
   /** Optional bold lead-in clause before `subheadRest`. */
   subheadBold?: string;
   subheadRest: string;
   primaryCta: CtaLink;
   secondaryCta: CtaLink;
   /** Short trust-signal line under the CTAs, e.g. ["100% web", "Acesso de onde estiver"]. */
-  trustBadges: string[];
+  trustBadges: TrustBadge[];
   preview: HeroPreview;
   /** Optional decorative background image behind the hero content. */
   backgroundImage?: string;
@@ -160,11 +186,13 @@ export interface BenefitsContent {
 }
 
 export interface AppShowcaseContent {
-  eyebrow: { icon: LucideIcon; label: string };
+  eyebrow: { icon?: LucideIcon; label: string };
   heading: string;
   description: string;
   pills: { icon: LucideIcon; label: string }[];
   cta: CtaLink;
+  /** Optional dark highlight card shown beside the phone mockup. */
+  sideCard?: { icon: LucideIcon; title: string; description: string };
   mockup: {
     greeting: string;
     stats: { label: string; value: string; tone: "brand" | "accent" }[];
@@ -178,6 +206,8 @@ export interface SupportChannel {
   icon: LucideIcon;
   title: string;
   description: string;
+  /** Optional direct contact (email address, phone) shown under the description. */
+  contact?: CtaLink;
 }
 
 export interface SupportContent {
@@ -208,7 +238,10 @@ export interface CtaBannerContent {
   /** Omitted when the section has a single, centered CTA instead of two. */
   primaryCta?: CtaLink;
   secondaryCta: CtaLink;
-  footnote: string;
+  /** Short icon + label trust signals under the description. */
+  highlights?: { icon: LucideIcon; label: string }[];
+  /** Plain-text fallback for `highlights`. */
+  footnote?: string;
   /** Direct contact email shown alongside the site's general phone number. */
   contactEmail?: string;
 }

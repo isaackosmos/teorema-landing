@@ -16,37 +16,37 @@ export function Header({ meta, content }: { meta: SiteMeta; content: HeaderConte
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 h-header border-b border-white/5 bg-ink-deep">
+    <header className="fixed inset-x-0 top-0 z-50 h-header border-b border-gray-100 bg-white/90 backdrop-blur-md">
       <Container className="flex h-full items-center justify-between">
         <a href="#" className="flex items-center">
           <Image
             src={meta.logo.src}
             alt={meta.logo.alt}
-            width={400}
-            height={130}
-            className="h-10 w-auto object-contain"
+            width={480}
+            height={160}
+            className="h-11 w-auto object-contain"
             priority
           />
         </a>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {content.nav.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-[14.5px] font-semibold text-white/90 transition hover:text-white"
+              className="text-[14px] font-medium text-ink/80 transition hover:text-brand"
             >
               {link.label}
             </a>
           ))}
-          <Button href={content.cta.href} size="sm" className="ml-2">
+          <Button href={content.cta.href} size="sm" className="ml-3">
             {content.cta.label} <ArrowRight className="h-4 w-4" />
           </Button>
         </nav>
 
         <button
           onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 place-items-center rounded-full bg-white/10 text-white lg:hidden"
+          className="grid h-10 w-10 place-items-center rounded-full bg-brand-tint text-ink lg:hidden"
           aria-label="Menu"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -59,7 +59,7 @@ export function Header({ meta, content }: { meta: SiteMeta; content: HeaderConte
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute inset-x-0 top-header border-t border-white/10 bg-ink-deep px-6 py-8 shadow-2xl lg:hidden"
+            className="absolute inset-x-0 top-header border-y border-gray-100 bg-white px-6 py-8 shadow-card-hover lg:hidden"
           >
             <div className="flex flex-col gap-6">
               {content.nav.map((link) => (
@@ -67,7 +67,7 @@ export function Header({ meta, content }: { meta: SiteMeta; content: HeaderConte
                   key={link.label}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="text-[16px] font-semibold text-white"
+                  className="text-[16px] font-semibold text-ink"
                 >
                   {link.label}
                 </a>

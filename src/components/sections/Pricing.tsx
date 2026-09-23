@@ -13,7 +13,7 @@ import type { PricingContent } from "@/content/types";
  */
 export function Pricing({ content }: { content: PricingContent }) {
   return (
-    <section id="planos" className="relative overflow-hidden bg-white py-section-y">
+    <section id="planos" className="relative overflow-hidden border-t border-gray-100 bg-white py-section-y-sm">
       {content.backgroundImage && (
         <Image
           src={content.backgroundImage}
@@ -41,10 +41,10 @@ export function Pricing({ content }: { content: PricingContent }) {
             <div
               key={plan.name}
               className={cn(
-                "relative flex flex-col rounded-xl border p-7",
+                "relative flex flex-col rounded-lg border p-7",
                 plan.highlighted
-                  ? "border-ink bg-ink text-white shadow-elevated lg:-translate-y-2 lg:scale-[1.04]"
-                  : "border-gray-200 bg-surface-subtle",
+                  ? "border-navy bg-gradient-to-br from-navy to-navy-mid text-white shadow-elevated lg:-translate-y-2 lg:scale-[1.04]"
+                  : "border-gray-100 bg-white shadow-card",
               )}
             >
               {plan.badge && (
@@ -81,7 +81,7 @@ export function Pricing({ content }: { content: PricingContent }) {
                 rel={plan.cta.external ? "noopener noreferrer" : undefined}
                 className={cn(
                   "mt-8 inline-flex h-11 items-center justify-center gap-2 rounded-full text-[14px] font-semibold transition",
-                  plan.highlighted ? "bg-brand text-white hover:bg-brand-hover" : "bg-ink text-white hover:bg-black",
+                  plan.highlighted ? "bg-brand text-white hover:bg-brand-hover" : "bg-navy text-white hover:bg-navy-mid",
                 )}
               >
                 {plan.cta.label} <ArrowRight className="h-4 w-4" />

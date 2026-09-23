@@ -8,7 +8,7 @@ import type { TestimonialsContent } from "@/content/types";
  */
 export function Testimonials({ content }: { content: TestimonialsContent }) {
   return (
-    <section className="border-y border-gray-100 bg-surface-subtle py-20">
+    <section className="border-t border-gray-100 bg-surface-tint py-section-y-sm">
       <Container>
         <div className="grid gap-4 md:grid-cols-3">
           {content.items.map((testimonial) => (

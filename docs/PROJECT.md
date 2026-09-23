@@ -51,10 +51,11 @@ not every component.
 | Group | Tokens | Use |
 |---|---|---|
 | `brand` | `DEFAULT #0F52FF`, `hover`, `light`, `tint`, `tint-border` | Primary actions, links, active states |
-| `accent` | `DEFAULT #8FE000` (lime), `ink`, `ink-alt`, `soft`, `soft-border` | "Growth"/positive signal, used sparingly |
-| `ink` | `DEFAULT #0B1220`, `deep #101B36` | Headings/text, dark surfaces (header, footer, CTA band) |
+| `accent` | `DEFAULT #8FE000` (lime), `ink`, `ink-alt`, `soft`, `soft-border`, `strong #5CB81C` | "Growth"/positive signal, used sparingly; `strong` fills the check badges |
+| `ink` | `DEFAULT #0B1220`, `deep #101B36` | Headings/text; `deep` for the phone-mockup frame |
+| `navy` | `DEFAULT #0A1B4D`, `mid #11318A` | Dark-blue surfaces (callout cards, CTA banner, mockup sidebar), usually as a `from-navy to-navy-mid` gradient |
 | `muted` | `#5A667D` | Secondary text on light backgrounds |
-| `surface` | `DEFAULT #FFFFFF`, `subtle #FCFCFD` | Page/section backgrounds |
+| `surface` | `DEFAULT #FFFFFF`, `subtle #FCFCFD`, `tint #F4F7FF` | Page/section backgrounds; `tint` is the pale-blue alternate section |
 | `star`, `whatsapp` | `#FFC224`, `#25D366` | Single-purpose literal-brand colors |
 | `fontFamily` | `heading` (Sora, via `--font-heading`), `sans` (Inter, via `--font-sans`) | Loaded with `next/font/google` in `app/layout.tsx` |
 | `fontSize` | `body-xs`/`body-sm`/`body`/`body-lg`, `eyebrow`, `h4`, `h2`/`h2-lg`, `h1`/`h1-lg`, `display`/`display-lg` | Semantic type scale — `h1` is hero-only, `display` is CTA-banner-only |

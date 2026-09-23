@@ -1,34 +1,34 @@
 import Image from "next/image";
-import { MessageCircle, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import type { FooterContent, SiteMeta } from "@/content/types";
 
 /**
- * Site footer: brand blurb + compliance badges, link columns, a contact
- * column (email + WhatsApp), and a bottom copyright bar. Always the last
- * section before the WhatsAppFloatingButton.
+ * Site footer on a light background: brand blurb + compliance badges,
+ * link columns, a contact column (phone, WhatsApp, email) and the legal
+ * links + copyright. Always the last section before the
+ * WhatsAppFloatingButton.
  */
 export function Footer({ meta, content }: { meta: SiteMeta; content: FooterContent }) {
   const copyright = content.copyrightTemplate.replace("{year}", String(new Date().getFullYear()));
 
   return (
-    <footer className="border-t border-white/10 bg-ink-deep">
-      <Container className="grid gap-10 py-12 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
-        <div>
+    <footer className="bg-white">
+      <Container className="grid gap-10 pb-12 pt-8 sm:grid-cols-2 lg:grid-cols-[minmax(0,2fr)_repeat(3,minmax(0,1fr))_minmax(0,1.6fr)]">
+        <div className="flex flex-col gap-4 sm:col-span-2 lg:col-span-1">
           <Image
             src={meta.logo.src}
             alt={meta.logo.alt}
-            width={400}
-            height={130}
-            className="h-12 w-auto object-contain"
+            width={480}
+            height={160}
+            className="h-14 w-auto self-start object-contain"
           />
-          <p className="mt-4 max-w-[300px] text-body-sm leading-relaxed text-white/50">{content.description}</p>
+          <p className="max-w-[320px] text-body-xs leading-relaxed text-muted">{content.description}</p>
           {content.complianceBadges && (
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2">
               {content.complianceBadges.map((badge) => (
                 <div
                   key={badge}
-                  className="grid h-8 place-items-center rounded-full border border-white/10 bg-white/10 px-3 text-[11px] text-white/70"
+                  className="grid h-8 place-items-center rounded-full border border-gray-200 bg-surface-subtle px-3 text-[11px] text-ink"
                 >
                   {badge}
                 </div>
@@ -39,8 +39,8 @@ export function Footer({ meta, content }: { meta: SiteMeta; content: FooterConte
 
         {content.columns.map((column) => (
           <div key={column.title}>
-            <div className="text-[13px] font-semibold text-white">{column.title}</div>
-            <div className="mt-4 space-y-2.5 text-body-sm text-white/60">
+            <div className="text-[13px] font-bold text-ink">{column.title}</div>
+            <div className="mt-3 space-y-2 text-body-xs text-muted">
               {column.items.map((item) => (
                 <div key={item}>{item}</div>
               ))}
@@ -49,39 +49,42 @@ export function Footer({ meta, content }: { meta: SiteMeta; content: FooterConte
         ))}
 
         <div>
-          <div className="text-[13px] font-semibold text-white">{content.contactColumnTitle}</div>
-          <div className="mt-4 space-y-2.5 text-body-sm text-white/60">
+          <div className="text-[13px] font-bold text-ink">{content.contactColumnTitle}</div>
+          <div className="mt-3 space-y-2 text-body-xs text-muted">
             <a
               href={meta.whatsapp.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 transition hover:text-white"
+              className="block transition hover:text-brand"
             >
-              <Phone className="h-3.5 w-3.5" /> {meta.whatsapp.phoneDisplay}
+              {meta.whatsapp.phoneDisplay}
             </a>
             <a
               href={meta.whatsapp.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 transition hover:text-white"
+              className="block transition hover:text-brand"
             >
-              <MessageCircle className="h-3.5 w-3.5" /> WhatsApp {meta.whatsapp.phoneDisplay}
+              WhatsApp
             </a>
-            <div>{meta.supportEmail}</div>
+            <a href={`mailto:${meta.supportEmail}`} className="block break-all transition hover:text-brand">
+              {meta.supportEmail}
+            </a>
           </div>
         </div>
-      </Container>
 
-      <div className="border-t border-white/10">
-        <Container className="flex h-16 items-center justify-between text-[12px] text-white/40">
-          <div>{copyright}</div>
-          <div className="flex gap-4">
-            {content.legalLinks.map((link) => (
-              <span key={link}>{link}</span>
+        <div className="text-body-xs text-muted lg:self-end">
+          <div className="flex flex-wrap gap-x-3 gap-y-1">
+            {content.legalLinks.map((link, i) => (
+              <span key={link} className="flex gap-3 whitespace-nowrap">
+                {i > 0 && <span className="text-gray-300">|</span>}
+                {link}
+              </span>
             ))}
           </div>
-        </Container>
-      </div>
+          <div className="mt-2">{copyright}</div>
+        </div>
+      </Container>
     </footer>
   );
 }

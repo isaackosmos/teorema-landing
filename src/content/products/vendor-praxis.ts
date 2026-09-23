@@ -16,6 +16,11 @@ import {
   Mail,
   Monitor,
   TrendingUp,
+  House,
+  Users,
+  Cloud,
+  Clock,
+  Headphones,
 } from "lucide-react";
 import type { ProductContent } from "@/content/types";
 
@@ -30,6 +35,7 @@ const vendorPraxis: ProductContent = {
   meta: {
     productName: "V3ndor Praxis",
     logo: { src: "/logos/vendor-praxis-logo-gradient.png", alt: "V3ndor Praxis" },
+    logoOnDark: { src: "/logos/vendor-praxis-logo.jpg", alt: "V3ndor Praxis" },
     supportEmail: "teorema@teorema.inf.br",
     whatsapp: {
       phoneDisplay: "42-3035-4030",
@@ -53,35 +59,53 @@ const vendorPraxis: ProductContent = {
     badgeText: "100% WEB • GESTÃO INTEGRADA",
     headlineLine1: "Sua empresa evolui.",
     headlineLine2Prefix: "O ",
-    headlineHighlight: "V3ndor Praxis evolui com ela.",
+    headlineHighlight: "V3ndor Praxis",
+    headlineSuffix: "evolui com ela.",
     subheadRest:
       "Uma plataforma de gestão 100% web que integra os principais processos da sua empresa e permite ampliar recursos conforme o seu negócio cresce.",
     primaryCta: { label: "Conheça o V3ndor Praxis", href: "#recursos" },
     secondaryCta: { label: "Ver recursos", href: "#recursos" },
-    trustBadges: ["100% web", "Acesso de onde estiver", "Gestão integrada"],
+    trustBadges: [
+      { icon: Cloud, label: "100% web" },
+      { icon: Smartphone, label: "Acesso de onde estiver" },
+      { icon: BarChart3, label: "Gestão integrada" },
+    ],
     backgroundImage: "/backgrounds/hero-waves.webp",
     preview: {
-      windowTitle: "Financeiro Geral • Hoje",
-      syncedLabel: "Sincronizado",
+      sidebar: [
+        { icon: House, label: "Início" },
+        { icon: ShoppingCart, label: "Vendas" },
+        { icon: ShoppingBag, label: "Compras" },
+        { icon: Package, label: "Estoque" },
+        { icon: Wallet, label: "Financeiro" },
+        { icon: FileText, label: "Fiscal" },
+        { icon: BarChart3, label: "Relatórios" },
+        { icon: Users, label: "Cadastros" },
+      ],
+      searchPlaceholder: "Buscar no sistema...",
+      userName: "Carlos",
+      title: "Visão Geral",
+      subtitle: "Acompanhe os principais indicadores da sua empresa",
       stats: [
-        { label: "Financeiro", value: "R$ 284 mil", delta: "+12%", icon: Wallet, tone: "positive" },
-        { label: "Vendas", value: "1.248", delta: "+8%", icon: ShoppingCart, tone: "brand" },
-        { label: "Estoque", value: "98,2%", delta: "Ok", icon: Package, tone: "accent" },
+        { label: "Financeiro", value: "R$ 284.320", delta: "↑ 12%", icon: Wallet, tone: "positive" },
+        { label: "Vendas", value: "1.248", delta: "↑ 8%", icon: ShoppingCart, tone: "brand" },
+        { label: "Estoque", value: "98,2%", delta: "● Em dia", icon: Package, tone: "brand" },
       ],
       chart: {
         label: "Evolução do faturamento",
-        values: [32, 48, 36, 64, 52, 80],
+        values: [22, 38, 58, 50, 66, 92],
+        labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"],
+        legend: ["Vendas", "Receitas"],
       },
       ordersTitle: "Movimentações recentes",
-      ordersLinkLabel: "ver todos",
       orders: [
-        { id: "#3821", client: "Mercado Central", amount: "R$ 1.420,00", status: "Pago" },
-        { id: "#3820", client: "Distribuidora Sul", amount: "R$ 8.900,00", status: "Faturado" },
-        { id: "#3819", client: "Loja Matriz", amount: "R$ 320,00", status: "Pendente" },
+        { title: "Pedido #3821", subtitle: "Cliente: Mercado Central", amount: "R$ 1.420,00", status: "Pago", statusTone: "positive" },
+        { title: "Pedido #3820", subtitle: "Cliente: Distribuidora Sul", amount: "R$ 8.900,00", status: "Em separação", statusTone: "brand" },
+        { title: "Pedido #3819", subtitle: "Cliente: Loja Matriz", amount: "R$ 320,00", status: "Pendente", statusTone: "warning" },
       ],
       floatingNotes: [
-        { icon: Check, title: "NF-e emitida", subtitle: "há 2 min", position: "top-left" },
-        { icon: Wallet, title: "+23% de margem", subtitle: "vs mês anterior", position: "bottom-right" },
+        { icon: Globe, title: "Acesse", subtitle: "de onde estiver", position: "top-right" },
+        { icon: Check, title: "100% WEB", position: "bottom-left", tone: "positive" },
       ],
     },
   },
@@ -130,6 +154,7 @@ const vendorPraxis: ProductContent = {
       "O V3ndor Praxis representa um novo passo na evolução das soluções Teorema. Além da emissão fiscal, sua empresa passa a contar com novos recursos para organizar e acompanhar diferentes áreas do negócio em um único ambiente.",
     before: {
       icon: Monitor,
+      badge: "ANTES",
       title: "Emissor de Notas",
       items: ["Emissão de notas", "Cadastro de clientes", "Cadastro de produtos", "Exportação de XML e DANFE", "Controles essenciais"],
     },
@@ -186,7 +211,7 @@ const vendorPraxis: ProductContent = {
   },
 
   appShowcase: {
-    eyebrow: { icon: Smartphone, label: "Área do Cliente" },
+    eyebrow: { label: "ÁREA DO CLIENTE" },
     heading: "Sua empresa com você, onde estiver.",
     description:
       "Acesse informações importantes da sua operação pelo V3ndor Praxis e acompanhe sua empresa com mais praticidade, mobilidade e controle.",
@@ -196,6 +221,11 @@ const vendorPraxis: ProductContent = {
       { icon: Globe, label: "Acesso pela web" },
     ],
     cta: { label: "Conhecer o V3ndor Praxis", href: "#contato" },
+    sideCard: {
+      icon: Clock,
+      title: "Mais mobilidade para o seu dia a dia.",
+      description: "Acesse pelo computador, notebook, tablet ou celular.",
+    },
     mockup: {
       greeting: "Olá, Carlos \u{1F44B}",
       stats: [
@@ -216,7 +246,12 @@ const vendorPraxis: ProductContent = {
     description: "Conte com uma equipe que conhece o sistema e está preparada para orientar você sempre que precisar.",
     channels: [
       { icon: Phone, title: "Telefone e WhatsApp", description: "Entre em contato com nossa equipe para tirar dúvidas e receber orientação sobre o V3ndor Praxis." },
-      { icon: Mail, title: "E-mail", description: "Envie sua solicitação para nossa equipe e receba o atendimento necessário." },
+      {
+        icon: Mail,
+        title: "E-mail",
+        description: "Envie sua solicitação para nossa equipe e receba o atendimento necessário.",
+        contact: { label: "teorema@teorema.inf.br", href: "mailto:teorema@teorema.inf.br" },
+      },
     ],
   },
 
@@ -228,8 +263,17 @@ const vendorPraxis: ProductContent = {
     headingHighlight: "próximo passo?",
     description:
       "Conheça o V3ndor Praxis e descubra como uma plataforma 100% web pode trazer mais organização, mobilidade e controle para sua gestão.",
+    primaryCta: {
+      label: "Quero conhecer o V3ndor Praxis",
+      href: "https://wa.me/554230354030?text=Olá!%20Quero%20conhecer%20o%20V3ndor%20Praxis.",
+      external: true,
+    },
     secondaryCta: { label: "Falar com a Teorema", href: "#suporte" },
-    footnote: "100% web • Gestão integrada • Suporte especializado",
+    highlights: [
+      { icon: Cloud, label: "100% web" },
+      { icon: BarChart3, label: "Gestão integrada" },
+      { icon: Headphones, label: "Suporte especializado" },
+    ],
     contactEmail: "rui@teorema.inf.br",
   },
 

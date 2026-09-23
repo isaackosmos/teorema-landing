@@ -17,6 +17,7 @@ const toneClasses = {
   "brand-tint": "bg-brand-tint border border-brand-tint-border text-brand",
   "accent-soft": "bg-accent-soft border border-accent-soft-border text-accent-ink",
   dark: "bg-ink text-white",
+  navy: "bg-navy text-white",
 } as const;
 
 /**
