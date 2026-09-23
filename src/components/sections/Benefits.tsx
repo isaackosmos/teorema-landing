@@ -15,7 +15,7 @@ import type { BenefitsContent } from "@/content/types";
  */
 export function Benefits({ content }: { content: BenefitsContent }) {
   return (
-    <section id="por-que" className="relative overflow-hidden border-t border-gray-100 bg-white py-section-y-sm">
+    <section id="por-que" className="relative overflow-hidden border-t border-gray-100 bg-white py-14">
       {content.backgroundImage && (
         <Image
           src={content.backgroundImage}
@@ -25,8 +25,8 @@ export function Benefits({ content }: { content: BenefitsContent }) {
           className="pointer-events-none select-none object-cover opacity-50"
         />
       )}
-      <Container className="relative grid items-start gap-10 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)]">
-        <div className="lg:sticky lg:top-[100px]">
+      <Container className="relative grid gap-8 lg:grid-cols-[minmax(0,3.5fr)_minmax(0,8.5fr)] lg:items-center">
+        <div>
           <SectionHeading
             heading={
               <>
@@ -44,7 +44,7 @@ export function Benefits({ content }: { content: BenefitsContent }) {
           )}
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
           {content.items.map((item, i) => (
             <motion.div
               key={item.title}
@@ -52,14 +52,14 @@ export function Benefits({ content }: { content: BenefitsContent }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.03 }}
-              className="flex gap-3 rounded-md border border-gray-100 bg-white p-4 shadow-card"
+              className="flex gap-2 rounded-md border border-brand-tint-border/70 bg-white px-2.5 py-3 shadow-card"
             >
-              <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-accent-strong">
-                <Check className="h-4 w-4 text-white" strokeWidth={3} />
+              <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent-strong">
+                <Check className="h-3 w-3 text-white" strokeWidth={3.5} />
               </span>
               <div>
-                <div className="text-[14px] font-bold leading-snug text-ink">{item.title}</div>
-                <div className="mt-1 text-body-xs text-muted">{item.description}</div>
+                <div className="text-[12px] font-bold leading-tight tracking-tight text-ink">{item.title}</div>
+                <div className="mt-1 text-[11px] leading-[1.35] text-muted">{item.description}</div>
               </div>
             </motion.div>
           ))}

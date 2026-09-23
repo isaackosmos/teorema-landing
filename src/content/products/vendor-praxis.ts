@@ -191,23 +191,23 @@ const vendorPraxis: ProductContent = {
   },
 
   benefits: {
-    headingPrefix: "Por que escolher o ",
+    // Non-breaking space keeps "o" on the line with the product name.
+    headingPrefix: "Por que escolher o ",
     headingHighlight: "V3ndor Praxis?",
     description:
       "Porque gestão não precisa ser complicada. O V3ndor Praxis une tecnologia, informação e facilidade de uso em uma plataforma preparada para acompanhar a evolução da sua empresa.",
     items: [
-      { title: "100% web", description: "Acesse pelo navegador, sem ficar preso a uma única máquina." },
-      { title: "Gestão integrada", description: "Informações importantes da empresa reunidas em um mesmo ambiente." },
+      { title: "100% web", description: "Acesse pelo navegador, sem ficar preso a uma máquina." },
+      { title: "Gestão integrada", description: "Informações reunidas em um único ambiente." },
       { title: "Mais mobilidade", description: "Acompanhe sua empresa de onde estiver." },
-      { title: "Mais controle", description: "Tenha informações organizadas para acompanhar sua operação." },
-      { title: "Recursos que evoluem", description: "Novas funcionalidades podem ser incorporadas conforme a necessidade do negócio." },
-      { title: "Atualizações da plataforma", description: "O sistema continua evoluindo para acompanhar novas demandas." },
-      { title: "Controle por usuários", description: "Organize o acesso às informações de acordo com cada usuário." },
-      { title: "Informação para decidir", description: "Consulte relatórios e informações importantes para sua gestão." },
-      { title: "Experiência Teorema", description: "Tecnologia desenvolvida por quem conhece a realidade das empresas." },
-      { title: "Suporte especializado", description: "Conte com uma equipe preparada para orientar sua empresa na utilização da solução." },
+      { title: "Mais controle", description: "Informações organizadas para sua operação." },
+      { title: "Recursos que evoluem", description: "Novas funcionalidades conforme sua necessidade." },
+      { title: "Atualizações da plataforma", description: "O sistema evolui para novas demandas." },
+      { title: "Controle por usuários", description: "Organize o acesso às informações." },
+      { title: "Informação para decidir", description: "Relatórios e dados da sua gestão." },
+      { title: "Experiência Teorema", description: "Tecnologia de quem conhece a realidade das empresas." },
+      { title: "Suporte especializado", description: "Equipe preparada para orientar você." },
     ],
-    backgroundImage: "/backgrounds/hero-waves.webp",
   },
 
   appShowcase: {
@@ -238,7 +238,6 @@ const vendorPraxis: ProductContent = {
         { title: "Pedido #3823", subtitle: "Aguardando aprovação" },
       ],
     },
-    backgroundImage: "/backgrounds/hero-waves.webp",
   },
 
   support: {
