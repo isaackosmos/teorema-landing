@@ -40,6 +40,7 @@ const config: Config = {
         navy: {
           DEFAULT: "#0A1B4D",
           mid: "#11318A",
+          teal: "#0B2E2B", // dark green end of the callout gradients
         },
         // Muted secondary text on light backgrounds.
         muted: "#5A667D",

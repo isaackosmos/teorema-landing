@@ -268,6 +268,8 @@ export interface WhatsAppButtonContent {
 
 export interface EvolutionPanel {
   icon: LucideIcon;
+  /** Optional brand mark rendered in place of `icon` (e.g. the product's logo symbol). */
+  image?: { src: string; alt: string };
   badge?: string;
   title: string;
   items: string[];
@@ -284,7 +286,8 @@ export interface EvolutionContent {
   description: string;
   before: EvolutionPanel;
   after: EvolutionPanel;
-  calloutIcon: LucideIcon;
+  /** Unused since the callout draws its own rising-chart graphic; kept optional for compatibility. */
+  calloutIcon?: LucideIcon;
   calloutText: string;
   /** Optional decorative background image behind the section. */
   backgroundImage?: string;

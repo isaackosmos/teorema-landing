@@ -13,6 +13,7 @@ export function SectionHeading({
   heading,
   description,
   align = "left",
+  size = "default",
   className,
 }: {
   eyebrow?: string;
@@ -20,6 +21,8 @@ export function SectionHeading({
   heading: ReactNode;
   description?: ReactNode;
   align?: "left" | "center";
+  /** `compact` keeps the smaller h2 size at every breakpoint, for headings sharing a row with dense content. */
+  size?: "default" | "compact";
   className?: string;
 }) {
   return (
@@ -29,7 +32,7 @@ export function SectionHeading({
           {eyebrow}
         </Pill>
       )}
-      <h2 className="font-heading text-h2 font-bold text-ink md:text-h2-lg">{heading}</h2>
+      <h2 className={cn("font-heading text-h2 font-bold text-ink", size === "default" && "md:text-h2-lg")}>{heading}</h2>
       {description && <p className="mt-4 text-body leading-relaxed text-muted">{description}</p>}
     </div>
   );

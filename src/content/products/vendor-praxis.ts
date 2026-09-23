@@ -146,12 +146,11 @@ const vendorPraxis: ProductContent = {
       { step: "03", title: "Amplie quando precisar", description: "Novas necessidades surgiram? O Praxis está preparado para incorporar mais recursos à sua gestão." },
       { step: "04", title: "Tenha informação para decidir", description: "Acompanhe dados e relatórios da sua empresa para tomar decisões com mais segurança." },
     ],
-    backgroundImage: "/backgrounds/hero-waves.webp",
   },
 
   evolution: {
     badge: "UMA EVOLUÇÃO DO QUE VOCÊ JÁ CONHECE",
-    heading: "Do emissor de notas para uma plataforma de gestão completa.",
+    heading: "Do emissor de notas para uma plataforma completa.",
     description:
       "O V3ndor Praxis representa um novo passo na evolução das soluções Teorema. Além da emissão fiscal, sua empresa passa a contar com novos recursos para organizar e acompanhar diferentes áreas do negócio em um único ambiente.",
     before: {
@@ -162,6 +161,7 @@ const vendorPraxis: ProductContent = {
     },
     after: {
       icon: TrendingUp,
+      image: { src: "/logos/vendor-praxis-mark.png", alt: "" },
       badge: "AGORA",
       title: "V3ndor Praxis",
       items: [
@@ -175,9 +175,7 @@ const vendorPraxis: ProductContent = {
         "Novos recursos conforme a evolução da plataforma",
       ],
     },
-    calloutIcon: TrendingUp,
     calloutText: "Você não está apenas mudando de sistema. Está ampliando as possibilidades da sua gestão.",
-    backgroundImage: "/backgrounds/evolution-waves.png",
   },
 
   pricing: {
