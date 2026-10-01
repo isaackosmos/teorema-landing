@@ -213,26 +213,53 @@ export function Hero({ meta, content }: { meta: SiteMeta; content: HeroContent }
                         <span className="text-[10.5px] font-semibold text-ink">{preview.chart.label}</span>
                         <Ellipsis className="h-3.5 w-3.5 text-muted" />
                       </div>
-                      <div className="relative mt-2 h-20">
-                        {CHART_GRIDLINES.map((line) => (
-                          <div
-                            key={line}
-                            className="absolute inset-x-0 border-t border-dashed border-gray-100"
-                            style={{ bottom: `${line}%` }}
-                          />
-                        ))}
-                        <div className="relative flex h-full items-end gap-2 border-b border-gray-200 px-1">
-                          {preview.chart.values.map((v, i) => (
-                            <div key={i} className="flex h-full flex-1 items-end justify-center">
-                              <div
-                                className="w-full max-w-[16px] rounded-t-[3px] bg-gradient-to-t from-accent-strong to-brand"
-                                style={{ height: `${v}%` }}
-                              />
-                            </div>
+                      <div className="mt-2 flex gap-1.5">
+                        {preview.chart.yAxis && (
+                          <div className="flex h-20 flex-col-reverse justify-between text-right text-[7px] leading-none text-muted">
+                            {preview.chart.yAxis.map((tick) => (
+                              <span key={tick} className="-mb-[3px] -mt-[3px]">
+                                {tick}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                        <div className="relative h-20 min-w-0 flex-1">
+                          {CHART_GRIDLINES.map((line) => (
+                            <div
+                              key={line}
+                              className="absolute inset-x-0 border-t border-dashed border-gray-100"
+                              style={{ bottom: `${line}%` }}
+                            />
                           ))}
+                          <div className="relative flex h-full items-end gap-2 border-b border-gray-200 px-1">
+                            {preview.chart.values.map((v, i) => {
+                              const second = preview.chart.secondaryValues?.[i];
+                              return (
+                                <div key={i} className="flex h-full flex-1 items-end justify-center gap-[2px]">
+                                  {second === undefined ? (
+                                    <div
+                                      className="w-full max-w-[16px] rounded-t-[3px] bg-gradient-to-t from-accent-strong to-brand"
+                                      style={{ height: `${v}%` }}
+                                    />
+                                  ) : (
+                                    <>
+                                      <div
+                                        className="w-full max-w-[9px] rounded-t-[2px] bg-gradient-to-t from-brand-light to-brand"
+                                        style={{ height: `${v}%` }}
+                                      />
+                                      <div
+                                        className="w-full max-w-[9px] rounded-t-[2px] bg-gradient-to-t from-accent-strong to-accent-mint"
+                                        style={{ height: `${second}%` }}
+                                      />
+                                    </>
+                                  )}
+                                </div>
+                              );
+                            })}
+                          </div>
                         </div>
                       </div>
-                      <div className="mt-1 flex gap-2 px-1">
+                      <div className={cn("mt-1 flex gap-2 px-1", preview.chart.yAxis && "pl-9")}>
                         {preview.chart.labels.map((label) => (
                           <div key={label} className="flex-1 text-center text-[8px] text-muted">
                             {label}
@@ -245,7 +272,7 @@ export function Hero({ meta, content }: { meta: SiteMeta; content: HeroContent }
                             <span className="h-2 w-2 rounded-[2px] bg-brand" /> {preview.chart.legend[0]}
                           </span>
                           <span className="inline-flex items-center gap-1">
-                            <span className="h-2 w-2 rounded-[2px] bg-accent-strong" /> {preview.chart.legend[1]}
+                            <span className="h-2 w-2 rounded-[2px] bg-accent-mint" /> {preview.chart.legend[1]}
                           </span>
                         </div>
                       )}

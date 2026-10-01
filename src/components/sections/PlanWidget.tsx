@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import { Check, ChevronUp, MousePointerClick, Tag, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 import type { PlanWidgetContent, SiteMeta } from "@/content/types";
 
 /** Wide screens get the card opened automatically while the hero is in view. */
@@ -45,8 +46,8 @@ function PlanCard({
         <span className="mt-3 inline-flex rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1 text-[10.5px] font-bold tracking-wide text-accent-ink">
           {content.badge}
         </span>
-        <div className="mt-2.5 text-[11px] text-muted">{content.pricePrefix}</div>
-        <div className="mt-0.5 flex flex-wrap items-baseline gap-x-1.5">
+        {content.pricePrefix && <div className="mt-2.5 text-[11px] text-muted">{content.pricePrefix}</div>}
+        <div className={cn("flex flex-wrap items-baseline gap-x-1.5", content.pricePrefix ? "mt-0.5" : "mt-2.5")}>
           <span className="whitespace-nowrap font-heading text-[26px] font-bold leading-none text-brand">{content.price}</span>
           {content.priceSuffix && <span className="text-[13px] text-muted">{content.priceSuffix}</span>}
         </div>
@@ -209,7 +210,7 @@ export function PlanWidget({ meta, content }: { meta: SiteMeta; content: PlanWid
             <span className="flex flex-col leading-tight">
               <span className="text-[10px] font-bold tracking-wide text-accent-mint">{content.badge}</span>
               <span className="whitespace-nowrap text-[13px] font-semibold">
-                {content.pricePrefix} {content.price}
+                {[content.pricePrefix, content.price, content.priceSuffix].filter(Boolean).join(" ")}
               </span>
             </span>
             <ChevronUp className="h-4 w-4 text-white/80" />

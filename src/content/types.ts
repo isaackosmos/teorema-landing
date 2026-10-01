@@ -91,6 +91,13 @@ export interface HeroPreview {
     values: number[];
     /** One axis label per value. */
     labels: string[];
+    /**
+     * Optional second series (percent heights), drawn as a green bar next to
+     * each `values` bar. Without it the chart has one gradient bar per label.
+     */
+    secondaryValues?: number[];
+    /** Optional y-axis tick labels, bottom to top (e.g. ["0", "100.000", ...]). */
+    yAxis?: string[];
     /** Legend entries — first is brand blue, second accent green. */
     legend?: [string, string];
   };
@@ -317,7 +324,8 @@ export interface EvolutionContent {
 export interface PlanWidgetContent {
   /** Plan name pill, e.g. "PLANO INTERMEDIÁRIO". */
   badge: string;
-  pricePrefix: string;
+  /** Optional line above the price (e.g. "A partir de"). */
+  pricePrefix?: string;
   price: string;
   priceSuffix?: string;
   note?: string;

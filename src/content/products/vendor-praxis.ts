@@ -3,7 +3,6 @@ import {
   ShoppingCart,
   ShoppingBag,
   Package,
-  FileText,
   BarChart3,
   Globe,
   ShieldCheck,
@@ -16,14 +15,13 @@ import {
   Monitor,
   TrendingUp,
   House,
-  Users,
   Cloud,
   Clock,
   Headphones,
-  CircleDollarSign,
-  ClipboardList,
-  Receipt,
   Tablet,
+  LayoutDashboard,
+  RotateCcw,
+  Landmark,
 } from "lucide-react";
 import type { ProductContent } from "@/content/types";
 
@@ -76,14 +74,13 @@ const vendorPraxis: ProductContent = {
     backgroundImage: "/backgrounds/hero-waves.webp",
     preview: {
       sidebar: [
-        { icon: House, label: "Início" },
+        { icon: LayoutDashboard, label: "Dashboard" },
+        { icon: House, label: "Cadastros" },
         { icon: ShoppingCart, label: "Vendas" },
         { icon: ShoppingBag, label: "Compras" },
+        { icon: RotateCcw, label: "Devoluções" },
+        { icon: Landmark, label: "Financeiro" },
         { icon: Package, label: "Estoque" },
-        { icon: Wallet, label: "Financeiro" },
-        { icon: FileText, label: "Fiscal" },
-        { icon: BarChart3, label: "Relatórios" },
-        { icon: Users, label: "Cadastros" },
       ],
       searchPlaceholder: "Buscar no sistema...",
       userName: "Carlos",
@@ -92,18 +89,20 @@ const vendorPraxis: ProductContent = {
       stats: [
         { label: "Financeiro", value: "R$ 284.320", delta: "↑ 12%", icon: Wallet, tone: "positive" },
         { label: "Vendas", value: "1.248", delta: "↑ 8%", icon: ShoppingCart, tone: "brand" },
-        { label: "Estoque", value: "98,2%", delta: "● Em dia", icon: Package, tone: "brand" },
+        { label: "Recebimento", value: "86,2%", delta: "● Em dia", icon: Package, tone: "brand" },
       ],
       chart: {
         label: "Evolução do faturamento",
-        values: [22, 38, 58, 50, 66, 92],
+        values: [20, 33, 50, 60, 75, 92],
+        secondaryValues: [15, 25, 41, 53, 65, 80],
         labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"],
+        yAxis: ["0", "100.000", "200.000", "300.000", "400.000"],
         legend: ["Vendas", "Receitas"],
       },
       ordersTitle: "Movimentações recentes",
       orders: [
         { title: "Pedido #3821", subtitle: "Cliente: Mercado Central", amount: "R$ 1.420,00", status: "Pago", statusTone: "positive" },
-        { title: "Pedido #3820", subtitle: "Cliente: Distribuidora Sul", amount: "R$ 8.900,00", status: "Em separação", statusTone: "brand" },
+        { title: "Pedido #3820", subtitle: "Cliente: Distribuidora Sul", amount: "R$ 3.800,00", status: "Em separação", statusTone: "brand" },
         { title: "Pedido #3819", subtitle: "Cliente: Loja Matriz", amount: "R$ 320,00", status: "Pendente", statusTone: "warning" },
       ],
       floatingNotes: [
@@ -114,19 +113,18 @@ const vendorPraxis: ProductContent = {
   },
 
   features: {
-    eyebrow: "GESTÃO INTEGRADA",
-    heading: "Sua empresa em um único ambiente",
+    eyebrow: "FUNCIONALIDADES DO SISTEMA",
+    heading: "Tudo o que sua empresa precisa, em um único lugar.",
     description:
-      "Vendas, estoque, financeiro, fiscal e informações gerenciais trabalhando de forma integrada para simplificar a rotina da sua empresa.",
+      "O V3ndor Praxis reúne as principais áreas da sua empresa em uma plataforma integrada, facilitando a gestão e tornando sua rotina mais simples e eficiente.",
     items: [
-      { icon: ShoppingCart, title: "Vendas e Orçamentos", description: "Crie orçamentos, transforme em pedidos e acompanhe suas vendas de forma simples." },
-      { icon: Package, title: "Estoque", description: "Controle entradas, saídas, inventário, produtos, grades e disponibilidade." },
-      { icon: CircleDollarSign, title: "Financeiro", description: "Acompanhe contas a pagar e receber, contas bancárias e fluxo de caixa." },
-      { icon: ClipboardList, title: "Compras", description: "Organize pedidos de compra e acompanhe o abastecimento da empresa." },
-      { icon: Receipt, title: "Fiscal", description: "Tenha os recursos fiscais integrados à operação, com mais organização e segurança." },
-      { icon: BarChart3, title: "Gestão e Relatórios", description: "Acompanhe informações importantes para apoiar suas decisões." },
-      { icon: Users, title: "Produtos e Cadastros", description: "Centralize clientes, produtos, categorias e formas de pagamento." },
-      { icon: Tablet, title: "100% Web", description: "Acesse o V3ndor Praxis pelo navegador, de onde estiver, sem depender de uma única máquina." },
+      { icon: LayoutDashboard, title: "Dashboard", description: "Visão geral e indicadores para acompanhamento rápido da empresa." },
+      { icon: Tablet, title: "Cadastros", description: "Gestão de clientes, produtos e informações essenciais." },
+      { icon: ShoppingCart, title: "Vendas", description: "Controle de pedidos, orçamentos e faturamento." },
+      { icon: ShoppingBag, title: "Compras", description: "Acompanhamento de compras e abastecimento da empresa." },
+      { icon: RotateCcw, title: "Devoluções", description: "Registro e controle de devoluções de mercadorias." },
+      { icon: Landmark, title: "Financeiro", description: "Contas a pagar, contas a receber e fluxo de caixa." },
+      { icon: Package, title: "Estoque", description: "Controle de entradas, saídas e disponibilidade de produtos." },
     ],
   },
 
@@ -244,7 +242,16 @@ const vendorPraxis: ProductContent = {
     heading: "Suporte para acompanhar sua empresa",
     description: "Conte com uma equipe que conhece o sistema e está preparada para orientar você sempre que precisar.",
     channels: [
-      { icon: Phone, title: "Telefone e WhatsApp", description: "Entre em contato com nossa equipe para tirar dúvidas e receber orientação sobre o V3ndor Praxis." },
+      {
+        icon: Phone,
+        title: "Telefone e WhatsApp",
+        description: "Entre em contato com nossa equipe para tirar dúvidas e receber orientação sobre o V3ndor Praxis.",
+        contact: {
+          label: "42-3035-4030",
+          href: "https://wa.me/554230354030?text=Olá!%20Quero%20conhecer%20o%20V3ndor%20Praxis.",
+          external: true,
+        },
+      },
       {
         icon: Mail,
         title: "E-mail",
@@ -294,7 +301,7 @@ const vendorPraxis: ProductContent = {
         title: "Teorema",
         items: [
           { label: "Sobre a Teorema", href: "https://teorema.inf.br/sobre/", external: true },
-          { label: "Suporte", href: "https://dicas.teorema.inf.br/", external: true },
+          { label: "Documentação e consultas", href: "https://docs.teorema.inf.br/", external: true },
           { label: "Contato", href: "#contato" },
         ],
       },
@@ -305,12 +312,9 @@ const vendorPraxis: ProductContent = {
     legalLinks: ["Termos de Uso", "Política de Privacidade"],
   },
 
-  // TODO(comercial): o preço e o "Sem fidelização" vêm do mockup e ainda
-  // precisam ser confirmados antes de publicar — "R$ 000,00" é placeholder.
   planWidget: {
-    badge: "PLANO INTERMEDIÁRIO",
-    pricePrefix: "A partir de",
-    price: "R$ 000,00",
+    badge: "PLANOS A PARTIR DE",
+    price: "R$ 122,00",
     priceSuffix: "mensais",
     note: "Sem fidelização e com o suporte que sua empresa merece.",
     listTitle: "Desfrute de um ERP completo, não apenas um emissor de notas.",
