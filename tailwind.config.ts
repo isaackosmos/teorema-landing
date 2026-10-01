@@ -28,6 +28,8 @@ const config: Config = {
           soft: "#E8FFB0", // light fill
           "soft-border": "#D6F58A",
           strong: "#5CB81C", // filled check badges (white glyph on top)
+          mint: "#3EE08F", // bright green of the access button's arrow badge
+          teal: "#0E8C86", // green end of the access button's gradient
         },
         // Ink — near-black text and dark surfaces.
         ink: {
@@ -109,6 +111,9 @@ const config: Config = {
         pill: "0 12px 32px rgba(0, 0, 0, 0.12)",
         "button-brand": "0 8px 24px rgba(15, 82, 255, 0.28)",
         "button-brand-lg": "0 8px 32px rgba(15, 82, 255, 0.4)",
+        // Blue-to-green glow under the header's app-access button.
+        "button-access":
+          "-6px 8px 22px rgba(15, 82, 255, 0.35), 8px 8px 22px rgba(62, 224, 143, 0.28)",
         dark: "0 16px 40px rgba(0, 0, 0, 0.24)",
       },
     },

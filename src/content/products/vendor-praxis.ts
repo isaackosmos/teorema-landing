@@ -55,7 +55,7 @@ const vendorPraxis: ProductContent = {
       { label: "Área do Cliente", href: "#area" },
       { label: "Contato", href: "#contato" },
     ],
-    cta: { label: "Conheça o Praxis", href: "#recursos" },
+    cta: { label: "Acesse o Praxis", sublabel: "Entrar", href: "https://app.vendor.inf.br/auth", external: true },
   },
 
   hero: {
@@ -303,6 +303,36 @@ const vendorPraxis: ProductContent = {
     contactLabels: { phone: "Telefone", whatsapp: "WhatsApp", email: "E-mail" },
     copyrightTemplate: "© {year} Teorema Sistemas. Todos os direitos reservados.",
     legalLinks: ["Termos de Uso", "Política de Privacidade"],
+  },
+
+  // TODO(comercial): o preço e o "Sem fidelização" vêm do mockup e ainda
+  // precisam ser confirmados antes de publicar — "R$ 000,00" é placeholder.
+  planWidget: {
+    badge: "PLANO INTERMEDIÁRIO",
+    pricePrefix: "A partir de",
+    price: "R$ 000,00",
+    priceSuffix: "mensais",
+    note: "Sem fidelização e com o suporte que sua empresa merece.",
+    listTitle: "Desfrute de um ERP completo, não apenas um emissor de notas.",
+    items: [
+      "Plataforma 100% web",
+      "Acesso de qualquer lugar",
+      "Vendas e orçamentos",
+      "Compras",
+      "Controle de estoque",
+      "Financeiro",
+      "Informações gerenciais",
+      "Suporte especializado",
+    ],
+    pitch: { prefix: "Venha para o ", highlight: "V3ndor Praxis", suffix: " e amplie as possibilidades da sua gestão." },
+    pitchSubtext: "ERP completo para a rotina da sua empresa.",
+    cta: {
+      label: "Contrate agora",
+      sublabel: "Clique e contrate",
+      href: "https://wa.me/554230354030?text=Olá!%20Quero%20contratar%20o%20V3ndor%20Praxis.",
+      external: true,
+    },
+    labels: { open: "Ver plano", close: "Fechar plano" },
   },
 
   whatsappButton: {

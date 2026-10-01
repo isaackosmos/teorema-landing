@@ -12,6 +12,7 @@ import { Support } from "@/components/sections/Support";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { Footer } from "@/components/sections/Footer";
+import { PlanWidget } from "@/components/sections/PlanWidget";
 import { WhatsAppFloatingButton } from "@/components/sections/WhatsAppFloatingButton";
 import vendorPraxis from "@/content/products/vendor-praxis";
 
@@ -41,6 +42,7 @@ export function VendorPraxisView() {
       {content.testimonials && <Testimonials content={content.testimonials} />}
       <CtaBanner meta={content.meta} content={content.ctaBanner} />
       <Footer meta={content.meta} content={content.footer} />
+      {content.planWidget && <PlanWidget meta={content.meta} content={content.planWidget} />}
       <WhatsAppFloatingButton meta={content.meta} content={content.whatsappButton} />
     </main>
   );

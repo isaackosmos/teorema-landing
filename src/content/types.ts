@@ -36,9 +36,17 @@ export interface SiteMeta {
   };
 }
 
+export interface HeaderCta extends CtaLink {
+  /**
+   * Optional second line (e.g. "Entrar"). When set, the header renders the
+   * two-line app-access button (`AccessButton`) instead of the plain pill.
+   */
+  sublabel?: string;
+}
+
 export interface HeaderContent {
   nav: NavLink[];
-  cta: CtaLink;
+  cta: HeaderCta;
 }
 
 export interface HeroStat {
@@ -300,6 +308,29 @@ export interface EvolutionContent {
 }
 
 /** Full content contract a product landing page must provide. */
+/**
+ * Floating plan card that follows the visitor down the page. Expanded over
+ * the hero on wide screens, collapsed to a small pill once the visitor
+ * scrolls (or on small screens); the pill reopens it. Optional — omit it
+ * until a plan and its price are published.
+ */
+export interface PlanWidgetContent {
+  /** Plan name pill, e.g. "PLANO INTERMEDIÁRIO". */
+  badge: string;
+  pricePrefix: string;
+  price: string;
+  priceSuffix?: string;
+  note?: string;
+  listTitle: string;
+  items: string[];
+  /** Pitch in the navy panel; `highlight` renders in light blue. */
+  pitch: { prefix: string; highlight: string; suffix: string };
+  pitchSubtext?: string;
+  cta: CtaLink & { sublabel?: string };
+  /** Accessible labels for the open/close controls. */
+  labels: { open: string; close: string };
+}
+
 export interface ProductContent {
   meta: SiteMeta;
   header: HeaderContent;
@@ -316,5 +347,7 @@ export interface ProductContent {
   testimonials?: TestimonialsContent;
   ctaBanner: CtaBannerContent;
   footer: FooterContent;
+  /** Optional — see PlanWidgetContent. */
+  planWidget?: PlanWidgetContent;
   whatsappButton: WhatsAppButtonContent;
 }
