@@ -4,9 +4,40 @@ import { useState } from "react";
 import Image from "next/image";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
+import { AccessButton } from "@/components/ui/AccessButton";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import type { HeaderContent, SiteMeta } from "@/content/types";
+import type { HeaderContent, HeaderCta, SiteMeta } from "@/content/types";
+
+/**
+ * The header CTA: the two-line `AccessButton` when the content gives a
+ * `sublabel`, otherwise the standard brand pill.
+ */
+function HeaderCtaLink({
+  cta,
+  size,
+  className,
+  onClick,
+}: {
+  cta: HeaderCta;
+  size: "sm" | "lg";
+  className?: string;
+  onClick?: () => void;
+}) {
+  const link = {
+    href: cta.href,
+    onClick,
+    ...(cta.external ? { target: "_blank", rel: "noopener noreferrer" } : {}),
+  };
+  if (cta.sublabel) {
+    return <AccessButton {...link} label={cta.label} sublabel={cta.sublabel} className={className} />;
+  }
+  return (
+    <Button {...link} size={size} className={className}>
+      {cta.label} <ArrowRight className="h-4 w-4" />
+    </Button>
+  );
+}
 
 /**
  * Fixed top navigation with a slide-down mobile menu.
@@ -29,7 +60,7 @@ export function Header({ meta, content }: { meta: SiteMeta; content: HeaderConte
           />
         </a>
 
-        <nav className="hidden items-center gap-7 xl:flex">
+        <nav className="hidden items-center gap-6 xl:flex">
           {content.nav.map((link) => (
             <a
               key={link.label}
@@ -39,9 +70,7 @@ export function Header({ meta, content }: { meta: SiteMeta; content: HeaderConte
               {link.label}
             </a>
           ))}
-          <Button href={content.cta.href} size="sm" className="ml-3">
-            {content.cta.label} <ArrowRight className="h-4 w-4" />
-          </Button>
+          <HeaderCtaLink cta={content.cta} size="sm" className="ml-3" />
         </nav>
 
         <button
@@ -72,14 +101,12 @@ export function Header({ meta, content }: { meta: SiteMeta; content: HeaderConte
                   {link.label}
                 </a>
               ))}
-              <Button
-                href={content.cta.href}
+              <HeaderCtaLink
+                cta={content.cta}
                 size="lg"
                 onClick={() => setOpen(false)}
-                className="mt-2 justify-center"
-              >
-                {content.cta.label} <ArrowRight className="h-4 w-4" />
-              </Button>
+                className="mt-2 justify-center self-start"
+              />
             </div>
           </motion.div>
         )}
