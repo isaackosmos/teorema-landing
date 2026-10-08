@@ -21,7 +21,7 @@ const fontSans = Inter({
 export const metadata: Metadata = {
   // NOTE: still an ASSUMED production domain — it was originally guessed from
   // a V3ndor Praxis support email that has since been replaced by
-  // teorema@teorema.inf.br, so nothing confirms it any more. Required so
+  // rui@teorema.inf.br, so nothing confirms it any more. Required so
   // Next.js can resolve absolute URLs for Open Graph / Twitter images —
   // confirm the real deploy domain before launch, or set NEXT_PUBLIC_SITE_URL.
   metadataBase: new URL(

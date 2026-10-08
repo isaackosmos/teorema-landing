@@ -37,7 +37,7 @@ const vendorPraxis: ProductContent = {
     productName: "V3ndor Praxis",
     logo: { src: "/logos/vendor-praxis-logo-gradient.png", alt: "V3ndor Praxis" },
     logoOnDark: { src: "/logos/vendor-praxis-logo.jpg", alt: "V3ndor Praxis" },
-    supportEmail: "teorema@teorema.inf.br",
+    supportEmail: "rui@teorema.inf.br",
     whatsapp: {
       phoneDisplay: "42-3035-4030",
       link: "https://wa.me/554230354030?text=Olá!%20Quero%20conhecer%20o%20V3ndor%20Praxis.",
@@ -65,7 +65,6 @@ const vendorPraxis: ProductContent = {
     subheadRest:
       "Uma plataforma de gestão 100% web que integra os principais processos da sua empresa e permite ampliar recursos conforme o seu negócio cresce.",
     primaryCta: { label: "Conheça o V3ndor Praxis", href: "#recursos" },
-    secondaryCta: { label: "Ver recursos", href: "#recursos" },
     trustBadges: [
       { icon: Cloud, label: "100% web" },
       { icon: Smartphone, label: "Acesso de onde estiver" },
@@ -114,7 +113,7 @@ const vendorPraxis: ProductContent = {
 
   features: {
     eyebrow: "FUNCIONALIDADES DO SISTEMA",
-    heading: "Tudo o que sua empresa precisa, em um único lugar.",
+    heading: "Do financeiro ao estoque: tudo o que seu negócio precisa em um só lugar.",
     description:
       "O V3ndor Praxis reúne as principais áreas da sua empresa em uma plataforma integrada, facilitando a gestão e tornando sua rotina mais simples e eficiente.",
     items: [
@@ -256,7 +255,8 @@ const vendorPraxis: ProductContent = {
         icon: Mail,
         title: "E-mail",
         description: "Envie sua solicitação para nossa equipe e receba o atendimento necessário.",
-        contact: { label: "teorema@teorema.inf.br", href: "mailto:teorema@teorema.inf.br" },
+        // Endereço não exibido na página a pedido do cliente — o contato por
+        // e-mail (rui@teorema.inf.br) fica só no link "E-mail" do rodapé.
       },
     ],
   },
@@ -274,7 +274,6 @@ const vendorPraxis: ProductContent = {
       href: "https://wa.me/554230354030?text=Olá!%20Quero%20conhecer%20o%20V3ndor%20Praxis.",
       external: true,
     },
-    secondaryCta: { label: "Falar com a Teorema", href: "#suporte" },
     highlights: [
       { icon: Cloud, label: "100% web" },
       { icon: BarChart3, label: "Gestão integrada" },
@@ -294,7 +293,7 @@ const vendorPraxis: ProductContent = {
           { label: "Plataforma", href: "#" },
           { label: "Recursos", href: "#recursos" },
           { label: "100% Web", href: "#recursos" },
-          { label: "Área do Cliente", href: "#area" },
+          { label: "Área do Cliente", href: "https://app.vendor.inf.br/auth", external: true },
         ],
       },
       {
@@ -302,7 +301,6 @@ const vendorPraxis: ProductContent = {
         items: [
           { label: "Sobre a Teorema", href: "https://teorema.inf.br/sobre/", external: true },
           { label: "Documentação e consultas", href: "https://docs.teorema.inf.br/", external: true },
-          { label: "Contato", href: "#contato" },
         ],
       },
     ],

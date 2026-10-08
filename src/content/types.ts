@@ -122,7 +122,8 @@ export interface HeroContent {
   subheadBold?: string;
   subheadRest: string;
   primaryCta: CtaLink;
-  secondaryCta: CtaLink;
+  /** Omitted when the hero has a single CTA. */
+  secondaryCta?: CtaLink;
   /** Short trust-signal line under the CTAs, e.g. ["100% web", "Acesso de onde estiver"]. */
   trustBadges: TrustBadge[];
   preview: HeroPreview;
@@ -252,7 +253,8 @@ export interface CtaBannerContent {
   description: string;
   /** Omitted when the section has a single, centered CTA instead of two. */
   primaryCta?: CtaLink;
-  secondaryCta: CtaLink;
+  /** Omitted when the section only needs the primary CTA. */
+  secondaryCta?: CtaLink;
   /** Short icon + label trust signals under the description. */
   highlights?: { icon: LucideIcon; label: string }[];
   /** Plain-text fallback for `highlights`. */

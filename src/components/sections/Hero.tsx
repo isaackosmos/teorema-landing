@@ -100,9 +100,11 @@ export function Hero({ meta, content }: { meta: SiteMeta; content: HeroContent }
             <Button href={content.primaryCta.href} size="lg">
               {content.primaryCta.label} <ArrowRight className="h-4 w-4" />
             </Button>
-            <Button href={content.secondaryCta.href} variant="outline" size="lg">
-              {content.secondaryCta.label}
-            </Button>
+            {content.secondaryCta && (
+              <Button href={content.secondaryCta.href} variant="outline" size="lg">
+                {content.secondaryCta.label}
+              </Button>
+            )}
           </motion.div>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-body-sm text-ink/80">

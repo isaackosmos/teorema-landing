@@ -84,14 +84,16 @@ export function CtaBanner({ meta, content }: { meta: SiteMeta; content: CtaBanne
                   {content.primaryCta.label} <ArrowRight className="h-4 w-4" />
                 </Button>
               )}
-              <Button
-                {...linkProps(content.secondaryCta)}
-                variant="outline-light"
-                size="md"
-                className="h-auto min-h-11 py-2.5 text-center"
-              >
-                {content.secondaryCta.label}
-              </Button>
+              {content.secondaryCta && (
+                <Button
+                  {...linkProps(content.secondaryCta)}
+                  variant="outline-light"
+                  size="md"
+                  className="h-auto min-h-11 py-2.5 text-center"
+                >
+                  {content.secondaryCta.label}
+                </Button>
+              )}
             </div>
           </div>
         </div>
