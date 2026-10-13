@@ -32,6 +32,11 @@ import type { ProductContent } from "@/content/types";
  * unconfirmed claims (implantation SLAs, integrations, compliance
  * badges, response-time stats) are left out until validated.
  */
+
+// Tela de novo e-mail do Gmail web — um link mailto não abre nada para quem
+// não tem programa de e-mail configurado no computador.
+const emailComposeUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=rui@teorema.inf.br";
+
 const vendorPraxis: ProductContent = {
   meta: {
     productName: "V3ndor Praxis",
@@ -255,8 +260,8 @@ const vendorPraxis: ProductContent = {
         icon: Mail,
         title: "E-mail",
         description: "Envie sua solicitação para nossa equipe e receba o atendimento necessário.",
-        // Endereço não exibido na página a pedido do cliente — o contato por
-        // e-mail (rui@teorema.inf.br) fica só no link "E-mail" do rodapé.
+        // Endereço não exibido na página a pedido do cliente.
+        contact: { label: "Enviar e-mail", href: emailComposeUrl, external: true },
       },
     ],
   },
@@ -306,6 +311,7 @@ const vendorPraxis: ProductContent = {
     ],
     contactColumnTitle: "Atendimento",
     contactLabels: { phone: "Telefone", whatsapp: "WhatsApp", email: "E-mail" },
+    emailHref: emailComposeUrl,
     copyrightTemplate: "© {year} Teorema Sistemas. Todos os direitos reservados.",
     legalLinks: ["Termos de Uso", "Política de Privacidade"],
   },

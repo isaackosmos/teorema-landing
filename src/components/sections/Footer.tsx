@@ -76,7 +76,12 @@ export function Footer({ meta, content }: { meta: SiteMeta; content: FooterConte
             <a href={meta.whatsapp.link} target="_blank" rel="noopener noreferrer" className={`block ${linkClass}`}>
               {labels?.whatsapp ?? "WhatsApp"}
             </a>
-            <a href={`mailto:${meta.supportEmail}`} className={`block break-all ${linkClass}`}>
+            <a
+              href={content.emailHref ?? `mailto:${meta.supportEmail}`}
+              target={content.emailHref ? "_blank" : undefined}
+              rel={content.emailHref ? "noopener noreferrer" : undefined}
+              className={`block break-all ${linkClass}`}
+            >
               {labels?.email ?? meta.supportEmail}
             </a>
           </div>

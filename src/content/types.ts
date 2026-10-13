@@ -280,6 +280,12 @@ export interface FooterContent {
    * When omitted, the raw phone number and email address are shown instead.
    */
   contactLabels?: { phone: string; whatsapp: string; email: string };
+  /**
+   * Overrides the email link's target (opened in a new tab), e.g. a webmail
+   * compose URL for visitors without a desktop mail client. Defaults to
+   * `mailto:` + `SiteMeta.supportEmail`.
+   */
+  emailHref?: string;
   /** Copyright line. Use the literal token "{year}" — it is replaced at render time. */
   copyrightTemplate: string;
   legalLinks: string[];
